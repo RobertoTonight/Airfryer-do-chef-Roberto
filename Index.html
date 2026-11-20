@@ -1,0 +1,3751 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="dashboard">
+  <meta name="design-style" content="moderne">
+  <title>Guia Definitivo e Mestre da Air Fryer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@1.43.0/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      color-scheme: light;
+
+      /* Page and surfaces (Moderne) */
+      --background: #f4ecdc;
+      --surface-container-low: #fbf6ea;
+      --surface-container: #e9dcc0;
+      --surface-container-high: #e0cfaa;
+
+      /* Ink */
+      --on-surface: #2b2a26;
+      --on-surface-variant: #55524a;
+
+      /* Rules */
+      --outline: #2b2a26;
+      --outline-variant: #d9cdb3;
+
+      /* Accents */
+      --primary: #1f6f6b;
+      --on-primary: #ffffff;
+      --primary-container: #bcd9d2;
+      --on-primary-container: #17504d;
+      --secondary: #ad431b;
+      --tertiary: #e0a526;
+      --error: #9a1f3a;
+      --on-error: #ffffff;
+
+      /* Data series */
+      --data-1: #1f6f6b;
+      --data-2: #d9572b;
+      --data-3: #a87710;
+      --data-4: #6b4a2e;
+      --data-context: #a39880;
+
+      /* Semantic */
+      --positive: #1f6f6b;
+      --warning: #a87710;
+      --focus: #1f6f6b;
+
+      /* Derived flat ink washes (using color-mix so zero raw colors appear in rules) */
+      --mustard-wash: color-mix(in srgb, var(--tertiary) 45%, var(--background));
+      --mustard-soft: color-mix(in srgb, var(--tertiary) 22%, var(--surface-container-low));
+      --orange-soft: color-mix(in srgb, var(--data-2) 18%, var(--surface-container-low));
+      --teal-soft: color-mix(in srgb, var(--primary) 16%, var(--surface-container-low));
+      --berry-soft: color-mix(in srgb, var(--error) 14%, var(--surface-container-low));
+
+      /* Fonts */
+      --font-headline: 'DM Serif Display', serif;
+      --font-body: 'Lexend', sans-serif;
+      --font-label: 'Lexend', sans-serif;
+
+      /* Type scale (Dashboard / Data Explorer) */
+      --display-size: clamp(2rem, 1.35rem + 2.4vw, 3.35rem);
+      --headline-size: clamp(1.375rem, 1.15rem + 0.8vw, 1.875rem);
+      --subhead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+      --body-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+      --label-size: 0.75rem;
+
+      /* Shape */
+      --rounded: 9999px;
+      --rounded-lg: 2.25rem 0.5rem 2.25rem 0.5rem;
+      --leaf-mirror: 0.5rem 2.25rem 0.5rem 2.25rem;
+      --rounded-full: 9999px;
+
+      /* Style effects */
+      --ink-border: 2px solid var(--outline);
+      --hairline-border: 1px solid var(--outline-variant);
+      --orb-r: 2.5rem;
+      --orb-r-small: 1.85rem;
+      --orb-clearance: 10.5rem;
+      --orbs:
+        radial-gradient(circle at calc(100% - 4.375rem) 4.75rem, color-mix(in srgb, var(--data-2) 90%, transparent) var(--orb-r-small), transparent calc(var(--orb-r-small) + 1px)),
+        radial-gradient(circle at calc(100% - 6.35rem) 3.75rem, color-mix(in srgb, var(--primary) 85%, transparent) var(--orb-r), transparent calc(var(--orb-r) + 1px)),
+        radial-gradient(circle at calc(100% - 8.95rem) 4.65rem, var(--tertiary) var(--orb-r), transparent calc(var(--orb-r) + 1px));
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    header { position: static !important; }
+
+    .page-grid {
+      display: grid;
+      gap: var(--space-xl);
+      padding: var(--space-lg);
+      max-width: 1280px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Focus rings */
+    :focus-visible {
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4 {
+      font-family: var(--font-headline);
+      font-weight: 400;
+      color: var(--on-surface);
+      margin: 0;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+    }
+    .display-title {
+      font-size: var(--display-size);
+      max-width: 18ch;
+    }
+    .display-title em {
+      font-style: normal;
+      color: var(--secondary);
+    }
+    .section-title {
+      font-size: var(--headline-size);
+    }
+    .section-title em {
+      font-style: normal;
+      color: var(--secondary);
+    }
+    .kicker {
+      display: inline-block;
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      background: var(--secondary);
+      color: var(--on-primary);
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      margin-bottom: var(--space-sm);
+    }
+    .label-voice {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--on-surface-variant);
+    }
+    .lede {
+      font-size: var(--subhead-size);
+      font-weight: 500;
+      color: var(--primary);
+      max-width: 62ch;
+      margin: var(--space-sm) 0 0;
+    }
+    p {
+      margin: 0;
+      max-width: 65ch;
+    }
+    .tabular {
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Title block with multiplied orbs */
+    .title-block {
+      background-color: var(--background);
+      background-image: var(--orbs);
+      background-blend-mode: multiply;
+      background-repeat: no-repeat;
+      border-bottom: var(--ink-border);
+      padding: var(--space-xl) var(--space-lg) var(--space-lg);
+      display: grid;
+      gap: var(--space-lg);
+    }
+    .title-block-head > * {
+      padding-inline-end: var(--orb-clearance);
+    }
+
+    /* Navigation pills */
+    .nav-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      border: var(--ink-border);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), transform var(--dur-micro) var(--ease-out);
+    }
+    .nav-pill:hover {
+      background: var(--surface-container);
+    }
+    .nav-pill.is-active {
+      background: var(--on-surface);
+      color: var(--background);
+    }
+
+    /* Leaf cards */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .leaf {
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md) var(--space-lg);
+      background: var(--mustard-wash);
+      color: var(--on-surface);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .leaf:nth-child(even) {
+      border-radius: var(--leaf-mirror);
+      background: var(--primary-container);
+    }
+    .leaf-value {
+      font-family: var(--font-headline);
+      font-size: clamp(1.75rem, 1.3rem + 1.2vw, 2.35rem);
+      line-height: 1.05;
+      color: var(--on-surface);
+    }
+    .leaf-caption {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--on-surface);
+    }
+
+    /* Buttons & Chips */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-lg);
+      border-radius: var(--rounded);
+      border: var(--ink-border);
+      font-family: var(--font-label);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: var(--surface-container);
+      color: var(--on-surface);
+      transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+    }
+    .btn:hover { background: var(--surface-container-high); }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-primary {
+      background: var(--primary);
+      color: var(--on-primary);
+      border-color: var(--outline);
+    }
+    .btn-primary:hover {
+      background: var(--on-primary-container);
+    }
+    .btn-secondary {
+      background: var(--secondary);
+      color: var(--on-primary);
+      border-color: var(--outline);
+    }
+    .btn-secondary:hover {
+      background: var(--error);
+    }
+    .btn-ink {
+      background: var(--on-surface);
+      color: var(--background);
+    }
+    .btn-ink:hover {
+      background: var(--on-surface-variant);
+    }
+    .btn-sm {
+      min-height: 36px;
+      padding: var(--space-xs) var(--space-md);
+      font-size: 0.8125rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      border-radius: var(--rounded-full);
+      background: var(--on-surface);
+      color: var(--background);
+      padding: var(--space-xs) var(--space-md);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+    .chip-teal { background: var(--primary); color: var(--on-primary); }
+    .chip-orange { background: var(--secondary); color: var(--on-primary); }
+    .chip-sage { background: var(--primary-container); color: var(--on-primary-container); border: 1px solid var(--outline); }
+    .chip-mustard { background: var(--mustard-wash); color: var(--on-surface); border: 1px solid var(--outline); }
+    .chip-berry { background: var(--error); color: var(--on-error); }
+
+    /* Sections */
+    .section-block {
+      display: grid;
+      gap: var(--space-lg);
+      padding-top: var(--space-md);
+    }
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: var(--space-md);
+      padding-bottom: var(--space-sm);
+      border-bottom: var(--ink-border);
+    }
+
+    /* Controls bar */
+    .controls-panel {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+    .controls-row {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: var(--space-md);
+      align-items: end;
+    }
+    .field-group {
+      display: grid;
+      gap: var(--space-xs);
+    }
+    .field-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--on-surface-variant);
+    }
+    .pill-input, .pill-select {
+      width: 100%;
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded);
+      border: var(--ink-border);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+    }
+    .pill-select {
+      padding-right: var(--space-xl);
+      cursor: pointer;
+    }
+    .pill-input:focus, .pill-select:focus {
+      background: var(--background);
+    }
+
+    /* Category filter strip */
+    .category-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .cat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      min-height: 40px;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      border: var(--ink-border);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .cat-pill:hover {
+      background: var(--surface-container);
+    }
+    .cat-pill[aria-pressed="true"] {
+      background: var(--on-surface);
+      color: var(--background);
+    }
+    .cat-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--rounded-full);
+      flex-shrink: 0;
+    }
+    .dot-all { background: var(--on-surface-variant); }
+    .dot-acompanhamentos { background: var(--tertiary); }
+    .dot-legumes { background: var(--primary); }
+    .dot-bovina { background: var(--secondary); }
+    .dot-suina { background: var(--data-2); }
+    .dot-aves { background: var(--data-3); }
+    .dot-pescados { background: var(--primary); }
+    .dot-fitness { background: var(--positive); }
+    .dot-boteco { background: var(--data-2); }
+    .dot-sobremesas { background: var(--error); }
+    .dot-paes { background: var(--data-4); }
+    .dot-desidratados { background: var(--data-3); }
+    .cat-pill[aria-pressed="true"] .dot-all { background: var(--tertiary); }
+
+    /* Explorer two-column workspace */
+    .explorer-workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 1fr);
+      gap: var(--space-lg);
+      align-items: start;
+    }
+    .recipe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(265px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .recipe-card-wrap {
+      container-type: inline-size;
+    }
+    .recipe-card {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-sm);
+      cursor: pointer;
+      transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out);
+      height: 100%;
+    }
+    .recipe-card-wrap:nth-child(even) .recipe-card {
+      border-radius: var(--leaf-mirror);
+    }
+    .recipe-card:hover {
+      background: var(--surface-container);
+      transform: translateY(-2px);
+    }
+    .recipe-card.is-selected {
+      background: var(--mustard-wash);
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+    }
+    .recipe-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: var(--space-sm);
+    }
+    .recipe-art {
+      width: 64px;
+      height: 64px;
+      border-radius: var(--rounded-full);
+      border: var(--ink-border);
+      background: var(--background);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .recipe-card-wrap:nth-child(3n+2) .recipe-art { background: var(--teal-soft); }
+    .recipe-card-wrap:nth-child(3n+3) .recipe-art { background: var(--orange-soft); }
+    .recipe-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      align-items: center;
+    }
+    .recipe-title {
+      font-family: var(--font-headline);
+      font-size: 1.2rem;
+      line-height: 1.15;
+      color: var(--on-surface);
+    }
+    .recipe-summary {
+      font-size: 0.875rem;
+      color: var(--on-surface-variant);
+      line-height: 1.45;
+    }
+    .recipe-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-xs);
+      margin-top: auto;
+      padding-top: var(--space-xs);
+      border-top: var(--hairline-border);
+    }
+    .stat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container);
+      color: var(--on-surface);
+    }
+    .stat-badge.is-temp {
+      background: var(--orange-soft);
+      color: var(--secondary);
+    }
+    .stat-badge.is-time {
+      background: var(--teal-soft);
+      color: var(--primary);
+    }
+    .card-actions-inline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .fav-btn {
+      min-width: 38px;
+      min-height: 38px;
+      border-radius: var(--rounded-full);
+      border: 1px solid var(--outline);
+      background: var(--surface-container-low);
+      color: var(--on-surface-variant);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .fav-btn[aria-pressed="true"] {
+      background: var(--error);
+      color: var(--on-error);
+    }
+
+    /* Sticky Recipe Detail Panel */
+    .recipe-detail-panel {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--leaf-mirror);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+      position: sticky;
+      top: var(--space-md);
+    }
+    .detail-hero {
+      display: flex;
+      gap: var(--space-md);
+      align-items: center;
+      padding-bottom: var(--space-md);
+      border-bottom: var(--ink-border);
+    }
+    .detail-art-lg {
+      width: 84px;
+      height: 84px;
+      border-radius: var(--rounded-full);
+      border: var(--ink-border);
+      background: var(--mustard-wash);
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+    .detail-title {
+      font-size: 1.65rem;
+      line-height: 1.1;
+    }
+    .detail-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-sm);
+    }
+    .metric-box {
+      background: var(--background);
+      border: var(--ink-border);
+      border-radius: 1rem 0.35rem 1rem 0.35rem;
+      padding: var(--space-sm);
+      text-align: center;
+    }
+    .metric-box-val {
+      font-family: var(--font-headline);
+      font-size: 1.35rem;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+    .metric-box-lbl {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--on-surface-variant);
+      font-weight: 600;
+    }
+
+    /* Timer Box */
+    .timer-box {
+      background: var(--primary-container);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-sm);
+    }
+    .timer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .timer-clock {
+      font-family: var(--font-headline);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--on-surface);
+    }
+    .timer-bar-track {
+      width: 100%;
+      height: 10px;
+      border-radius: var(--rounded-full);
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline);
+      overflow: hidden;
+    }
+    .timer-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--secondary);
+      transition: width var(--dur-short) var(--ease-out);
+    }
+
+    /* Ingredients & Steps */
+    .ingredient-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-xs);
+    }
+    .ingredient-item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-sm);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: 0.65rem;
+      background: var(--background);
+      border: 1px solid var(--outline-variant);
+      cursor: pointer;
+    }
+    .ingredient-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--primary);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .ingredient-item.is-checked span {
+      text-decoration: line-through;
+      color: var(--on-surface-variant);
+    }
+    .steps-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: var(--space-sm);
+    }
+    .step-row {
+      display: grid;
+      grid-template-columns: 32px minmax(0, 1fr);
+      gap: var(--space-sm);
+      align-items: start;
+      padding: var(--space-sm);
+      border-radius: 1rem 0.35rem 1rem 0.35rem;
+      background: var(--background);
+      border: 1px solid var(--outline-variant);
+    }
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: var(--rounded-full);
+      background: var(--on-surface);
+      color: var(--background);
+      display: grid;
+      place-items: center;
+      font-size: 0.8125rem;
+      font-weight: 700;
+    }
+    .chef-tip-callout {
+      background: var(--mustard-wash);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-xs);
+    }
+
+    /* Technical Maintenance Grid */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(270px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .tech-card {
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      background: var(--surface-container-low);
+      display: grid;
+      gap: var(--space-sm);
+      align-content: start;
+    }
+    .tech-card:nth-child(1) { background: var(--mustard-soft); }
+    .tech-card:nth-child(2) { background: var(--teal-soft); border-radius: var(--leaf-mirror); }
+    .tech-card:nth-child(3) { background: var(--orange-soft); }
+    .tech-card:nth-child(4) { background: var(--primary-container); border-radius: var(--leaf-mirror); }
+
+    .tech-check-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-top: auto;
+      padding: var(--space-xs) var(--space-md);
+      min-height: 40px;
+      border-radius: var(--rounded-full);
+      border: var(--ink-border);
+      background: var(--surface-container-low);
+      color: var(--on-surface);
+      font-family: var(--font-label);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .tech-check-btn[aria-pressed="true"] {
+      background: var(--primary);
+      color: var(--on-primary);
+    }
+
+    /* 20/20 Converter Tool */
+    .converter-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+      gap: var(--space-lg);
+      align-items: stretch;
+    }
+    .converter-inputs {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+    .slider-pair {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 96px;
+      gap: var(--space-sm);
+      align-items: center;
+    }
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .converter-output {
+      background: var(--mustard-wash);
+      border: var(--ink-border);
+      border-radius: var(--leaf-mirror);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+      align-content: start;
+    }
+    .converter-big-nums {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-md);
+    }
+    .big-num-card {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+    }
+    .big-num-card .val {
+      font-family: var(--font-headline);
+      font-size: 2.25rem;
+      line-height: 1.05;
+      color: var(--secondary);
+    }
+
+    /* Master Table + Chart */
+    .table-panel {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+    }
+    .table-scroll {
+      overflow-x: auto;
+    }
+    table.master-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    table.master-table thead th {
+      text-align: left;
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--ink-border);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--on-surface-variant);
+      background: var(--background);
+    }
+    table.master-table tbody td {
+      padding: var(--space-sm) var(--space-md);
+      border-bottom: var(--hairline-border);
+      vertical-align: top;
+    }
+    table.master-table tbody tr:hover {
+      background: var(--mustard-soft);
+    }
+    table.master-table tbody tr.is-highlight {
+      background: var(--mustard-wash);
+    }
+
+    /* Visual Temp Spectrum Chart (SVG) */
+    .chart-card {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--leaf-mirror);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-sm);
+    }
+    .chart-box {
+      min-height: 280px;
+      width: 100%;
+    }
+
+    /* Utensils Permitidos vs Proibidos */
+    .utensils-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-lg);
+    }
+    .utensil-col {
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      display: grid;
+      gap: var(--space-md);
+      align-content: start;
+    }
+    .utensil-col.is-allowed {
+      background: var(--primary-container);
+    }
+    .utensil-col.is-forbidden {
+      background: var(--berry-soft);
+      border-radius: var(--leaf-mirror);
+    }
+    .utensil-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: var(--space-sm);
+    }
+    .utensil-item {
+      background: var(--surface-container-low);
+      border: 1px solid var(--outline);
+      border-radius: 1rem 0.35rem 1rem 0.35rem;
+      padding: var(--space-sm) var(--space-md);
+      display: grid;
+      gap: 2px;
+    }
+
+    /* 10 Secrets Grid */
+    .secrets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+      gap: var(--space-md);
+    }
+    .secret-card {
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      display: grid;
+      gap: var(--space-xs);
+      align-content: start;
+      cursor: pointer;
+      transition: background-color var(--dur-short) var(--ease-out);
+    }
+    .secret-card:nth-child(even) {
+      border-radius: var(--leaf-mirror);
+    }
+    .secret-card.is-mastered {
+      background: var(--primary-container);
+    }
+    .secret-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .secret-num {
+      font-family: var(--font-headline);
+      font-size: 1.5rem;
+      color: var(--secondary);
+      line-height: 1;
+    }
+
+    /* Empty state */
+    .empty-state {
+      grid-column: 1 / -1;
+      background: var(--surface-container-low);
+      border: var(--ink-border);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      text-align: center;
+      display: grid;
+      gap: var(--space-md);
+      justify-items: center;
+    }
+
+    /* Footer */
+    .site-footer {
+      border-top: var(--ink-border);
+      padding: var(--space-lg) 0 var(--space-xl);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: var(--space-md);
+      align-items: center;
+      color: var(--on-surface-variant);
+      font-size: 0.875rem;
+    }
+
+    /* Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 980px) {
+      .explorer-workspace {
+        grid-template-columns: 1fr;
+      }
+      .recipe-detail-panel {
+        position: static;
+      }
+      .controls-row {
+        grid-template-columns: 1fr 1fr;
+      }
+      .converter-layout,
+      .utensils-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-sm);
+        gap: var(--space-lg);
+      }
+      .title-block {
+        padding: var(--space-lg) var(--space-md);
+        --orb-clearance: 0rem;
+        background-image: none;
+      }
+      .controls-row {
+        grid-template-columns: 1fr;
+      }
+      .detail-metrics {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .converter-big-nums {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid">
+    <header class="title-block">
+      <div class="title-block-head">
+        <span class="kicker">Manual Culinário &amp; Catálogo Mestre</span>
+        <h1 class="display-title">Guia Definitivo e Mestre da <em>Air Fryer</em></h1>
+        <p class="lede">Técnica de chef, manutenção sem erro, regra de conversão 20/20 e catálogo completo com ingredientes, tempos e temperaturas para dominar cada preparo.</p>
+      </div>
+
+      <nav class="nav-pills" aria-label="Navegação principal do guia">
+        <a href="#catalogo" class="nav-pill is-active"><i data-lucide="utensils" width="16" height="16"></i> Catálogo de Receitas</a>
+        <a href="#manutencao" class="nav-pill"><i data-lucide="sparkles" width="16" height="16"></i> Uso &amp; Manutenção</a>
+        <a href="#conversor" class="nav-pill"><i data-lucide="thermometer" width="16" height="16"></i> Regra 20/20 &amp; Tabela</a>
+        <a href="#segredos" class="nav-pill"><i data-lucide="flame" width="16" height="16"></i> Utensílios &amp; 10 Segredos</a>
+      </nav>
+
+      <div class="kpi-row">
+        <div class="leaf">
+          <span class="label-voice">Catálogo Completo</span>
+          <span class="leaf-value tabular" id="kpi-total-recipes">48</span>
+          <span class="leaf-caption">Receitas testadas em 11 categorias</span>
+        </div>
+        <div class="leaf">
+          <span class="label-voice">Regra Técnica 20/20</span>
+          <span class="leaf-value tabular">-20 °C</span>
+          <span class="leaf-caption">E 20% a 30% menos tempo que o forno</span>
+        </div>
+        <div class="leaf">
+          <span class="label-voice">Segredos da Crocância</span>
+          <span class="leaf-value tabular" id="kpi-secrets-count">0 / 10</span>
+          <span class="leaf-caption">Técnicas de Reação de Maillard</span>
+        </div>
+        <div class="leaf">
+          <span class="label-voice">Seu Caderno Salvo</span>
+          <span class="leaf-value tabular" id="kpi-user-progress">0 fav · 0 feitas</span>
+          <span class="leaf-caption">Progresso salvo automaticamente</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- SEÇÃO 1: CATÁLOGO DE RECEITAS -->
+    <section id="catalogo" class="section-block" aria-labelledby="titulo-catalogo">
+      <div class="section-header">
+        <div>
+          <span class="kicker">Exploração Interativa</span>
+          <h2 id="titulo-catalogo" class="section-title">Catálogo Mestre de <em>Receitas</em></h2>
+        </div>
+        <span class="chip chip-teal tabular" id="results-counter">Exibindo 48 receitas</span>
+      </div>
+
+      <div class="controls-panel">
+        <div class="controls-row">
+          <div class="field-group">
+            <label for="recipe-search" class="field-label">Buscar receita, ingrediente ou técnica</label>
+            <input type="search" id="recipe-search" class="pill-input" placeholder="Ex.: picanha, panko, pudim, queijo, papillote…" oninput="handleSearchInput(this.value)">
+          </div>
+
+          <div class="field-group">
+            <label for="time-filter" class="field-label">Tempo de preparo</label>
+            <select id="time-filter" class="pill-select" onchange="handleTimeFilter(this.value)">
+              <option value="all">Todos os tempos</option>
+              <option value="fast">Express (até 15 min)</option>
+              <option value="medium">Médio (16 a 25 min)</option>
+              <option value="long">Assados (acima de 25 min)</option>
+              <option value="favs">Apenas Favoritas</option>
+              <option value="cooked">Já Preparadas</option>
+            </select>
+          </div>
+
+          <div class="field-group">
+            <label for="sort-select" class="field-label">Ordenar por</label>
+            <select id="sort-select" class="pill-select" onchange="handleSortChange(this.value)">
+              <option value="id">Ordem do Guia (#)</option>
+              <option value="time-asc">Mais rápidas primeiro</option>
+              <option value="temp-asc">Menor temperatura (°C)</option>
+              <option value="temp-desc">Maior temperatura (°C)</option>
+              <option value="name">Ordem alfabética (A–Z)</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn" id="clear-filters-btn" onclick="resetCatalogFilters()">Limpar filtros</button>
+        </div>
+
+        <div class="field-group">
+          <span class="field-label">Filtrar por categoria</span>
+          <div class="category-strip" id="category-strip" role="group" aria-label="Categorias de receitas"></div>
+        </div>
+      </div>
+
+      <div class="explorer-workspace">
+        <div class="recipe-grid" id="recipe-grid" aria-live="polite"></div>
+
+        <aside class="recipe-detail-panel" id="recipe-detail-panel" aria-label="Ficha completa da receita selecionada">
+          <!-- Preenchido dinamicamente pelo JS -->
+        </aside>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: GUIA TÉCNICO DE USO E MANUTENÇÃO -->
+    <section id="manutencao" class="section-block reveal" aria-labelledby="titulo-manutencao">
+      <div class="section-header">
+        <div>
+          <span class="kicker">Parte I — Cuidados Essenciais</span>
+          <h2 id="titulo-manutencao" class="section-title">Uso Correto &amp; <em>Manutenção</em></h2>
+        </div>
+        <span class="chip chip-sage tabular" id="maintenance-badge">0 / 4 rotinas verificadas</span>
+      </div>
+
+      <div class="tech-grid">
+        <article class="tech-card">
+          <span class="chip">Antes do 1º Uso</span>
+          <h3>Cura do Antiaderente (PTFE / Cerâmica)</h3>
+          <p>Lave o cesto e a cuba com o lado amarelo (macio) da esponja e detergente neutro. Seque completamente, unte toda a superfície interna com <strong>1 colher (chá) de óleo vegetal</strong>, aqueça vazia a <strong>200 °C por 3 minutos</strong>, espere esfriar e remova o excesso com papel-toalha. Isso sela os microporos e previne descascamento.</p>
+          <button type="button" class="tech-check-btn" id="maint-btn-cura" aria-pressed="false" onclick="toggleMaintenance('cura')">
+            <i data-lucide="check-circle-2" width="16" height="16"></i> Marcar como feita
+          </button>
+        </article>
+
+        <article class="tech-card">
+          <span class="chip chip-teal">Pós-Preparo</span>
+          <h3>Limpeza Sem Choque Térmico</h3>
+          <p><strong>Jamais</strong> mergulhe o cesto quente direto na água fria da torneira: a dilatação abrupta empena o metal e descola o antiaderente. Aguarde <strong>10 minutos</strong> para amornar, cubra com água morna e detergente neutro de molho por 15 minutos e lave sem esforço — e sem esfregar com palha de aço.</p>
+          <button type="button" class="tech-check-btn" id="maint-btn-choque" aria-pressed="false" onclick="toggleMaintenance('choque')">
+            <i data-lucide="check-circle-2" width="16" height="16"></i> Protocolo adotado
+          </button>
+        </article>
+
+        <article class="tech-card">
+          <span class="chip chip-orange">A cada 15 dias</span>
+          <h3>Higienização da Resistência Espiral</h3>
+          <p>Após assar carnes gordurosas (panceta, costela) ou quinzenalmente: desligue da tomada, espere esfriar totalmente e vire o aparelho sobre um pano macio. Limpe a resistência superior com pano úmido em <strong>água morna + 1 col. (sopa) de vinagre de álcool + 1 col. (chá) de bicarbonato</strong> para eliminar fumaça branca.</p>
+          <button type="button" class="tech-check-btn" id="maint-btn-resistencia" aria-pressed="false" onclick="toggleMaintenance('resistencia')">
+            <i data-lucide="check-circle-2" width="16" height="16"></i> Resistência limpa
+          </button>
+        </article>
+
+        <article class="tech-card">
+          <span class="chip chip-berry">Pós-Pescados</span>
+          <h3>Neutralização de Odores com Limão</h3>
+          <p>Após grelhar peixes, camarões ou alimentos de aroma intenso, coloque <strong>½ xícara de água com o suco e a casca de 1 limão</strong> dentro de um ramequim refratário e ligue a Air Fryer a <strong>180 °C por 5 minutos</strong>. O vapor cítrico desodoriza toda a câmara interna e a ventoinha.</p>
+          <button type="button" class="tech-check-btn" id="maint-btn-odores" aria-pressed="false" onclick="toggleMaintenance('odores')">
+            <i data-lucide="check-circle-2" width="16" height="16"></i> Truque anotado
+          </button>
+        </article>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: REGRA 20/20, CONVERSOR E TABELA MESTRA -->
+    <section id="conversor" class="section-block reveal" aria-labelledby="titulo-conversor">
+      <div class="section-header">
+        <div>
+          <span class="kicker">Precisão Térmica</span>
+          <h2 id="titulo-conversor" class="section-title">Regra 20/20 &amp; <em>Tabela Mestra</em></h2>
+        </div>
+        <span class="chip chip-mustard">Convecção forçada em câmara compacta</span>
+      </div>
+
+      <div class="converter-layout">
+        <div class="converter-inputs">
+          <div>
+            <h3>Conversor Forno Convencional → Air Fryer</h3>
+            <p class="recipe-summary">Adapte qualquer receita de forno tradicional aplicando a <strong>Regra Técnica 20/20</strong>: reduza ~20 °C e diminua o tempo entre 20% e 30%.</p>
+          </div>
+
+          <div class="field-group">
+            <label for="oven-temp-num" class="field-label">Temperatura da receita no forno (°C)</label>
+            <div class="slider-pair">
+              <input type="range" id="oven-temp-slider" min="120" max="240" step="5" value="200" oninput="syncTempFromSlider(this.value)" aria-label="Controle deslizante de temperatura do forno">
+              <input type="number" id="oven-temp-num" class="pill-input tabular" min="120" max="240" step="5" value="200" oninput="syncTempFromNumber(this.value)">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="oven-time-num" class="field-label">Tempo da receita no forno (minutos)</label>
+            <div class="slider-pair">
+              <input type="range" id="oven-time-slider" min="10" max="120" step="5" value="40" oninput="syncTimeFromSlider(this.value)" aria-label="Controle deslizante de tempo do forno">
+              <input type="number" id="oven-time-num" class="pill-input tabular" min="10" max="120" step="5" value="40" oninput="syncTimeFromNumber(this.value)">
+            </div>
+          </div>
+
+          <div class="field-group">
+            <span class="field-label">Exemplos rápidos</span>
+            <div class="nav-pills">
+              <button type="button" class="btn btn-sm" onclick="applyConverterPreset(180, 40)">Bolo (180 °C · 40m)</button>
+              <button type="button" class="btn btn-sm" onclick="applyConverterPreset(200, 50)">Frango (200 °C · 50m)</button>
+              <button type="button" class="btn btn-sm" onclick="applyConverterPreset(220, 35)">Batata (220 °C · 35m)</button>
+              <button type="button" class="btn btn-sm" onclick="applyConverterPreset(190, 30)">Gratinado (190 °C · 30m)</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="converter-output" aria-live="polite">
+          <span class="label-voice">Ajuste Recomendado na Air Fryer</span>
+          <div class="converter-big-nums">
+            <div class="big-num-card">
+              <span class="label-voice">Temperatura</span>
+              <div class="val tabular" id="conv-out-temp">180 °C</div>
+              <span class="recipe-summary" id="conv-out-temp-note">Redução padrão de 20 °C</span>
+            </div>
+            <div class="big-num-card">
+              <span class="label-voice">Tempo Ideal</span>
+              <div class="val tabular" id="conv-out-time">28–32 min</div>
+              <span class="recipe-summary" id="conv-out-time-note">Economia de 8 a 12 min</span>
+            </div>
+          </div>
+          <div class="chef-tip-callout">
+            <span class="label-voice">Orientação Técnica</span>
+            <p id="conv-out-advice">Para assados médios entre 170 °C e 185 °C, verifique o centro com palito ou termômetro aos 70% do tempo para evitar ressecamento.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gráfico Comparativo de Temperaturas por Família -->
+      <div class="chart-card">
+        <div class="section-header" style="border-bottom: none; padding-bottom: 0;">
+          <div>
+            <h3>Mapa Visual de Temperaturas e Tempos Médios</h3>
+            <p class="recipe-summary">Comparativo entre as 6 faixas térmicas da Air Fryer — da desidratação lenta (100 °C) à selagem para reação de Maillard (200 °C).</p>
+          </div>
+        </div>
+        <div class="chart-box" id="temp-spectrum-chart"></div>
+      </div>
+
+      <!-- Tabela Mestra de 17 Cortes -->
+      <div class="table-panel">
+        <div class="section-header" style="border-bottom: none; padding-bottom: 0;">
+          <div>
+            <h3>Tabela Mestra de Cortes &amp; Preparos (17 Referências)</h3>
+            <p class="recipe-summary">Filtre pelo alimento ou clique em uma linha para destacar a referência durante o preparo.</p>
+          </div>
+          <div class="field-group" style="min-width: 240px;">
+            <label for="table-filter-input" class="field-label">Filtrar tabela</label>
+            <input type="search" id="table-filter-input" class="pill-input" placeholder="Ex.: picanha, tilápia, bolo…" oninput="renderMasterTable(this.value)">
+          </div>
+        </div>
+
+        <div class="table-scroll">
+          <table class="master-table">
+            <thead>
+              <tr>
+                <th>Alimento / Corte</th>
+                <th>Quantidade Padrão</th>
+                <th>Temperatura</th>
+                <th>Tempo Médio</th>
+                <th>Ação Crítica no Preparo</th>
+              </tr>
+            </thead>
+            <tbody id="master-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: UTENSÍLIOS E 10 SEGREDOS DA CROCÂNCIA -->
+    <section id="segredos" class="section-block reveal" aria-labelledby="titulo-segredos">
+      <div class="section-header">
+        <div>
+          <span class="kicker">Segurança &amp; Alta Performance</span>
+          <h2 id="titulo-segredos" class="section-title">Utensílios Permitidos &amp; <em>10 Segredos</em> da Crocância</h2>
+        </div>
+        <span class="chip chip-orange">Regra de ouro: 1,5 cm de folga lateral</span>
+      </div>
+
+      <div class="utensils-grid">
+        <div class="utensil-col is-allowed">
+          <div class="card-actions-inline">
+            <h3>Pode Ir ao Cesto (Com Segurança)</h3>
+            <span class="chip chip-teal">Permitidos</span>
+          </div>
+          <p>Qualquer recipiente próprio para forno convencional, respeitando <strong>1,5 cm de espaço nas laterais</strong> para o vórtice de ar quente circular.</p>
+          <ul class="utensil-list">
+            <li class="utensil-item">
+              <strong>Formas de alumínio, inox e ferro fundido</strong>
+              <span class="recipe-summary">Ideais para bolos pequenos (16–18 cm), marmitinhas e carnes. Evite revestimentos descascando.</span>
+            </li>
+            <li class="utensil-item">
+              <strong>Silicone culinário, porcelana (ramequins) e vidro temperado</strong>
+              <span class="recipe-summary">Refratários Marinex/Pyrex e forminhas de silicone espesso aguentam 200 °C com folga.</span>
+            </li>
+            <li class="utensil-item">
+              <strong>Papel-alumínio e papel-manteiga próprio (furado)</strong>
+              <span class="recipe-summary">Sempre com alimento pesado em cima; fure com garfo e não cubra 100% do fundo para não abafar o ar.</span>
+            </li>
+            <li class="utensil-item">
+              <strong>Espetinhos de bambu hidratados</strong>
+              <span class="recipe-summary">Deixe os espetos de molho em água por 10 minutos antes de montar kaftas ou yakitori.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="utensil-col is-forbidden">
+          <div class="card-actions-inline">
+            <h3>Nunca Colocar na Air Fryer</h3>
+            <span class="chip chip-berry">Proibidos</span>
+          </div>
+          <p>Materiais inflamáveis, termoplásticos ou itens leves soltos que podem ser sugados pela ventoinha até a resistência incandescente.</p>
+          <ul class="utensil-list">
+            <li class="utensil-item">
+              <strong>Potes plásticos, isopor e filme de PVC</strong>
+              <span class="recipe-summary">Derretem em segundos e liberam compostos tóxicos no alimento e na resistência.</span>
+            </li>
+            <li class="utensil-item">
+              <strong>Papel-toalha, guardanapos e vidro comum não temperado</strong>
+              <span class="recipe-summary">Papel comum pega fogo com o ar superaquecido; pratos comuns trincam por choque térmico.</span>
+            </li>
+            <li class="utensil-item">
+              <strong>Folhas soltas durante o pré-aquecimento</strong>
+              <span class="recipe-summary">Sem peso em cima, a sucção puxa papel-manteiga ou alumínio direto para a espiral quente.</span>
+            </li>
+            <li class="utensil-item">
+              <strong>Milho de pipoca, sopas soltas e queijo/orégano soltos</strong>
+              <span class="recipe-summary">Grãos secos e ervas leves voam na resistência; líquidos em excesso vazam pelas aberturas do cesto.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-header" style="margin-top: var(--space-md);">
+        <div>
+          <h3>Os 10 Segredos de Chef para Crocância Sem Fritura</h3>
+          <p class="recipe-summary">Clique em cada segredo para marcar como dominado no seu repertório culinário.</p>
+        </div>
+        <span class="chip chip-sage tabular" id="secrets-progress-chip">0 de 10 dominados</span>
+      </div>
+
+      <div class="secrets-grid" id="secrets-grid"></div>
+    </section>
+
+    <footer class="site-footer">
+      <div>
+        <strong>Guia Definitivo e Mestre da Air Fryer</strong> — Baseado no livro <em>Receitas &amp; Dicas de Airfryer do Roberto</em> e nos acervos de <em>Receiteria</em>, <em>TudoGostoso</em>, <em>Cookpad</em>, <em>Seara</em> e <em>Receitas Nestlé</em>.
+      </div>
+      <button type="button" class="btn btn-sm" id="reset-progress-btn" onclick="handleResetProgress(this)">Zerar progresso salvo</button>
+    </footer>
+  </div>
+
+  <api-shim></api-shim>
+  <script>
+    // =========================================================================
+    // 1. DADOS ESTRUTURADOS (100% EM PORTUGUÊS, BASEADOS NAS FONTES DO CADERNO)
+    // =========================================================================
+
+    const CATEGORIES = [
+      { id: `all`, label: `Todas`, dotClass: `dot-all` },
+      { id: `acompanhamentos`, label: `Acompanhamentos`, dotClass: `dot-acompanhamentos` },
+      { id: `legumes`, label: `Legumes`, dotClass: `dot-legumes` },
+      { id: `bovina`, label: `Carnes Bovinas`, dotClass: `dot-bovina` },
+      { id: `suina`, label: `Carnes Suínas`, dotClass: `dot-suina` },
+      { id: `aves`, label: `Aves`, dotClass: `dot-aves` },
+      { id: `pescados`, label: `Peixes & Frutos do Mar`, dotClass: `dot-pescados` },
+      { id: `fitness`, label: `Fitness & Funcionais`, dotClass: `dot-fitness` },
+      { id: `boteco`, label: `Petiscos de Boteco`, dotClass: `dot-boteco` },
+      { id: `sobremesas`, label: `Sobremesas`, dotClass: `dot-sobremesas` },
+      { id: `paes`, label: `Pães & Confeitaria Fina`, dotClass: `dot-paes` },
+      { id: `desidratados`, label: `Desidratados`, dotClass: `dot-desidratados` }
+    ];
+
+    const RECIPES = [
+      // --- ACOMPANHAMENTOS ---
+      {
+        id: `R001`,
+        num: `#001`,
+        title: `Arroz Branco Soltinho na Marmitinha`,
+        category: `acompanhamentos`,
+        time: 25,
+        temp: 180,
+        servings: `4 porções`,
+        technique: `Marmitinha / Vapor`,
+        summary: `Arroz soltinho sem sujar panela de fogão, assado com água fervente em assadeira de alumínio.`,
+        tip: `Use água já fervente para acelerar a cocção e cubra com papel-alumínio bem preso na borda da marmitinha nos primeiros 18 minutos.`,
+        ingredients: [
+          `1 xícara (chá) de arroz agulhinha lavado e bem escorrido`,
+          `2 xícaras (chá) de água fervente`,
+          `2 dentes de alho picadinhos`,
+          `1 colher (sopa) de azeite de oliva`,
+          `1 colher (chá) de sal`
+        ],
+        steps: [
+          `Pré-aqueça a Air Fryer a 180 °C por 3 minutos. Em uma marmitinha de alumínio ou forma que caiba com 1,5 cm de folga, misture o arroz, o alho, o azeite e o sal.`,
+          `Despeje a água fervente, mexa rapidamente e cubra bem com papel-alumínio.`,
+          `Asse a 180 °C por 18 minutos. Retire o alumínio com cuidado, solte os grãos com um garfo e deixe mais 5 a 7 minutos descoberto para secar completamente.`
+        ]
+      },
+      {
+        id: `R004`,
+        num: `#004`,
+        title: `Batatas Rústicas Crocantes com Alecrim`,
+        category: `acompanhamentos`,
+        time: 22,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Reação de Maillard`,
+        summary: `Gomos dourados com casca estaladiça por fora e miolo macio, perfumados com páprica defumada e alecrim.`,
+        tip: `Secar os gomos perfeitamente em pano limpo ou papel-toalha é obrigatório: qualquer água restante gera vapor e deixa a batata murcha.`,
+        ingredients: [
+          `500 g de batata Asterix ou inglesa lavada com casca, em gomos`,
+          `1 colher (sopa) de azeite de oliva`,
+          `1 colher (chá) de páprica defumada`,
+          `1 colher (chá) de alho em pó`,
+          `Ramos de alecrim fresco e sal grosso triturado a gosto`
+        ],
+        steps: [
+          `Lave e seque muito bem os gomos de batata com pano limpo. Em uma tigela, envolva com azeite, páprica defumada, alho em pó, alecrim e sal.`,
+          `Disponha no cesto da Air Fryer pré-aquecida a 200 °C sem sobrepor em excesso (máximo 2/3 do cesto) e programe 22 minutos.`,
+          `Agite o cesto vigorosamente aos 10 e aos 16 minutos para garantir casquinha dourada 360° e interior cremoso.`
+        ]
+      },
+      {
+        id: `R006`,
+        num: `#006`,
+        title: `Mandioca Dourada na Manteiga de Garrafa`,
+        category: `acompanhamentos`,
+        time: 16,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Crocância Sem Óleo`,
+        summary: `Toletes de mandioca pré-cozida com pontas super crocantes e aroma irresistível de manteiga de garrafa.`,
+        tip: `A mandioca precisa estar cozida al dente e bem seca antes de entrar no cesto — se passar do ponto no cozimento, desmancha ao agitar.`,
+        ingredients: [
+          `500 g de mandioca cozida al dente e bem escorrida, em toletes`,
+          `2 colheres (sopa) de manteiga de garrafa (ou manteiga derretida)`,
+          `1 colher (chá) de sal`,
+          `Salsinha picada para finalizar`
+        ],
+        steps: [
+          `Seque os toletes de mandioca já cozida com papel-toalha e pincele generosamente com a manteiga de garrafa e sal.`,
+          `Coloque em camada única no cesto da Air Fryer pré-aquecida a 200 °C por 10 minutos.`,
+          `Sacuda o cesto ou vire os pedaços e asse por mais 6 minutos a 200 °C até ficarem dourados e crocantes nas pontas. Finalize com salsinha.`
+        ]
+      },
+      {
+        id: `R007`,
+        num: `#007`,
+        title: `Arroz Biro-Biro Prático de Travessa`,
+        category: `acompanhamentos`,
+        time: 10,
+        temp: 190,
+        servings: `4 porções`,
+        technique: `Reaproveitamento`,
+        summary: `Transforme sobras de arroz cozido em um acompanhamento clássico com bacon crocante, ovos e batata palha.`,
+        tip: `Adicione a batata palha apenas fora do cesto na hora de servir para que ela não perca a crocância no calor residual.`,
+        ingredients: [
+          `3 xícaras (chá) de arroz branco já cozido`,
+          `100 g de bacon em tirinhas`,
+          `2 ovos batidos`,
+          `1/2 cebola picada e 1 colher (sopa) de manteiga`,
+          `1 xícara (chá) de batata palha e cheiro-verde a gosto`
+        ],
+        steps: [
+          `Em uma assadeira que caiba no cesto, asse o bacon com a cebola a 190 °C por 6 minutos até dourar; abra a gaveta, despeje os ovos batidos no canto da forma e volte por 2 minutos.`,
+          `Mexa os ovos com um garfo formando pedacinhos e incorpore o arroz cozido e a manteiga, aquecendo por mais 2 minutos a 190 °C.`,
+          `Retire da Air Fryer, misture a batata palha e o cheiro-verde na hora de servir.`
+        ]
+      },
+      {
+        id: `R008`,
+        num: `#008`,
+        title: `Cuscuz Nordestino Recheado na Cumbuquinha`,
+        category: `acompanhamentos`,
+        time: 12,
+        temp: 180,
+        servings: `2 porções`,
+        technique: `Vapor na Cumbuquinha`,
+        summary: `Cuscuz fofinho sem precisar de cuscuzeira, recheado com carne-seca desfiada e queijo coalho derretido.`,
+        tip: `Coloque 1 colher de sopa de água no fundo da cuba externa para gerar vapor suave enquanto os ramequins assam tampados.`,
+        ingredients: [
+          `1 xícara (chá) de flocão de milho hidratado por 10 min em 1/2 xícara de água com sal`,
+          `80 g de queijo coalho em fatias`,
+          `80 g de carne-seca desfiada (ou calabresa picada)`,
+          `1 colher (sopa) de manteiga ou requeijão`
+        ],
+        steps: [
+          `Unte duas cumbuquinhas de cerâmica ou ramequins com manteiga; monte metade do flocão hidratado na base sem apertar demais.`,
+          `Distribua a carne-seca e o queijo coalho no centro, cubra com o restante do flocão, adicione 1 colher (sopa) de água no fundo da cesta e tampe os ramequins com papel-alumínio.`,
+          `Asse a 180 °C por 12 minutos, retirando o papel-alumínio nos últimos 2 minutos para dourar e derreter o queijo do topo.`
+        ]
+      },
+      {
+        id: `R043`,
+        num: `#043`,
+        title: `Ovo Cozido Perfeito na Air Fryer`,
+        category: `acompanhamentos`,
+        time: 14,
+        temp: 130,
+        servings: `4 unidades`,
+        technique: `Controle de Gema`,
+        summary: `Esqueça a panela com água: escolha o ponto exato da gema — cremosa ou firme — direto no cesto.`,
+        tip: `Dê choque térmico em água com gelo logo após retirar da Air Fryer para interromper o cozimento e soltar a casca facilmente.`,
+        ingredients: [
+          `4 ovos inteiros em temperatura ambiente`,
+          `Água gelada com pedras de gelo para o choque térmico pós-cocção`,
+          `Sal e pimenta-do-reino a gosto para servir`
+        ],
+        steps: [
+          `Pré-aqueça a Air Fryer a 130 °C por 3 minutos e disponha os ovos inteiros diretamente sobre a grelha do cesto sem empilhar.`,
+          `Asse a 130 °C pelo tempo do ponto desejado: 10 minutos para gema mole/cremosa, 12 minutos para ponto médio ou 14 minutos para gema firme.`,
+          `Retire com pinça e mergulhe imediatamente em tigela com água e gelo por 3 minutos antes de descascar.`
+        ]
+      },
+
+      // --- LEGUMES ---
+      {
+        id: `R011`,
+        num: `#011`,
+        title: `Brócolis Tostado Crocante com Alho Laminado`,
+        category: `legumes`,
+        time: 10,
+        temp: 190,
+        servings: `4 porções`,
+        technique: `Tostado Rápido`,
+        summary: `Floretes com pontas caramelizadas e crocantes, finalizados com lâminas de alho douradas e raspas de limão.`,
+        tip: `Reserve o alho laminado para os últimos 4 minutos — se entrar no início a 190 °C, ele queima e amarga o prato.`,
+        ingredients: [
+          `1 maço de brócolis separado em floretes médios bem secos`,
+          `3 dentes de alho em lâminas grossas`,
+          `1 colher (sopa) de azeite de oliva`,
+          `Raspas de 1/2 limão, sal e pimenta-do-reino`
+        ],
+        steps: [
+          `Misture os floretes de brócolis completamente secos com o azeite, o sal e a pimenta-do-reino (reserve o alho).`,
+          `Leve ao cesto da Air Fryer a 190 °C por 6 minutos até as pontas começarem a tostar.`,
+          `Adicione o alho laminado, sacuda o cesto e asse por mais 4 minutos a 190 °C; sirva com raspas de limão.`
+        ]
+      },
+      {
+        id: `R012`,
+        num: `#012`,
+        title: `Couve-Flor Gratinada com Parmesão e Cúrcuma`,
+        category: `legumes`,
+        time: 14,
+        temp: 190,
+        servings: `4 porções`,
+        technique: `Gratinado com Maionese`,
+        summary: `Floretes macios por dentro com crosta dourada, aromática e levemente picante de cúrcuma e parmesão.`,
+        tip: `A maionese (ou creme de ricota) funciona como condutor térmico perfeito para aderir os temperos e dourar por igual.`,
+        ingredients: [
+          `1 couve-flor média em floretes secos`,
+          `2 colheres (sopa) de maionese ou creme de ricota`,
+          `1 colher (chá) de cúrcuma em pó`,
+          `1/2 xícara (chá) de queijo parmesão ralado, sal e orégano`
+        ],
+        steps: [
+          `Envolva os floretes de couve-flor crua na mistura de maionese, cúrcuma, sal e metade do parmesão.`,
+          `Disponha no cesto da Air Fryer a 190 °C por 10 minutos até ficarem macios ao espetar com um garfo.`,
+          `Polvilhe o restante do parmesão e o orégano por cima e deixe mais 4 minutos a 190 °C para gratinar.`
+        ]
+      },
+      {
+        id: `R013`,
+        num: `#013`,
+        title: `Chips de Abobrinha Empanados no Parmesão`,
+        category: `legumes`,
+        time: 12,
+        temp: 200,
+        servings: `3 porções`,
+        technique: `Empanamento Panko`,
+        summary: `Rodelas finíssimas com casquinha crocante de Panko e queijo, sem uma gota de óleo de imersão.`,
+        tip: `Corte em espessura uniforme de 3 mm e pressione bem a mistura de Panko para que o queijo não voe com a ventoinha.`,
+        ingredients: [
+          `1 abobrinha italiana firme em rodelas finas (3 mm)`,
+          `1 clara de ovo levemente batida`,
+          `1/2 xícara (chá) de farinha Panko`,
+          `3 colheres (sopa) de parmesão ralado fino e ervas finas`
+        ],
+        steps: [
+          `Seque as rodelas de abobrinha em papel-toalha, passe pela clara batida e pressione na mistura de Panko, parmesão e ervas.`,
+          `Acomode em camada única no cesto da Air Fryer sem sobrepor.`,
+          `Asse a 200 °C por 12 minutos, virando aos 7 minutos até ficarem douradas e estaladiças.`
+        ]
+      },
+      {
+        id: `R014`,
+        num: `#014`,
+        title: `Berinjela à Parmegiana Rápida Sem Fritura`,
+        category: `legumes`,
+        time: 15,
+        temp: 190,
+        servings: `4 porções`,
+        technique: `Gratinado Express`,
+        summary: `Fatias assadas no cesto cobertas com molho de tomate rústico, muçarela derretida e manjericão fresco.`,
+        tip: `Passe primeiro na Air Fryer apenas com azeite para eliminar a umidade da berinjela antes de colocar o molho e o queijo.`,
+        ingredients: [
+          `1 berinjela grande em fatias longitudinais de 1 cm`,
+          `1/2 xícara (chá) de molho de tomate rústico`,
+          `150 g de queijo muçarela fatiado`,
+          `Azeite de oliva, sal, orégano e folhas de manjericão`
+        ],
+        steps: [
+          `Pincele as fatias de berinjela com azeite e sal e asse diretamente no cesto a 190 °C por 10 minutos, virando na metade.`,
+          `Cubra cada fatia com uma colherada de molho de tomate e uma fatia de muçarela.`,
+          `Polvilhe orégano e retorne por mais 5 minutos a 190 °C até o queijo borbulhar e dourar; sirva com manjericão.`
+        ]
+      },
+      {
+        id: `R018`,
+        num: `#018`,
+        title: `Quiabo Sequinho e Crocante Sem Baba`,
+        category: `legumes`,
+        time: 14,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Alta Temperatura`,
+        summary: `O jeito mais prático de preparar quiabo sequinho, tostado e com zero baba usando gotas de limão.`,
+        tip: `Não lave o quiabo depois de cortar e seque completamente antes do tempero; o ácido do limão neutraliza a mucilagem.`,
+        ingredients: [
+          `300 g de quiabos pequenos e firmes (lavados e muito bem secos)`,
+          `1 colher (sopa) de azeite e suco de 1/2 limão`,
+          `Alho granulado, sal e páprica picante a gosto`
+        ],
+        steps: [
+          `Corte apenas as pontinhas do quiabo sem abrir a vagem (ou corte ao meio no sentido do comprimento) e misture com limão, azeite, alho, páprica e sal.`,
+          `Espalhe no cesto da Air Fryer pré-aquecida a 200 °C em camada fina.`,
+          `Asse por 14 minutos a 200 °C, agitando o cesto a cada 5 minutos até ficarem tostados e sequinhos.`
+        ]
+      },
+      {
+        id: `R053`,
+        num: `#053`,
+        title: `Batata-Doce Rústica com Chimichurri e Páprica`,
+        category: `legumes`,
+        time: 20,
+        temp: 190,
+        servings: `3 porções`,
+        technique: `Assado Aromático`,
+        summary: `Cubos ou palitos de batata-doce caramelizados por fora e macios por dentro, ideais para acompanhar carnes.`,
+        tip: `Corte todos os pedaços no mesmo tamanho para que o cozimento seja uniforme e nenhum cubo queime antes do outro.`,
+        ingredients: [
+          `400 g de batata-doce cortada em cubos ou palitos médios`,
+          `1 colher (sopa) de azeite de oliva`,
+          `1 colher (chá) de páprica defumada`,
+          `1 colher (chá) de chimichurri seco e sal a gosto`
+        ],
+        steps: [
+          `Seque os cubos de batata-doce e misture com o azeite, a páprica, o chimichurri e o sal.`,
+          `Pré-aqueça a Air Fryer a 190 °C por 3 minutos e distribua em camada única no cesto.`,
+          `Asse por 20 minutos a 190 °C, sacudindo o cesto aos 10 minutos para dourar por igual.`
+        ]
+      },
+
+      // --- CARNES BOVINAS ---
+      {
+        id: `R022`,
+        num: `#022`,
+        title: `Picanha na Air Fryer com Manteiga de Ervas`,
+        category: `bovina`,
+        time: 10,
+        temp: 200,
+        servings: `3 porções`,
+        technique: `Selagem 200 °C`,
+        summary: `Bifes altos de 2 dedos selados em alta temperatura para preservar suculência interna e crosta dourada.`,
+        tip: `Retire a carne da geladeira 15 minutos antes para perder o gelo central e pré-aqueça a Air Fryer por 5 minutos a 200 °C.`,
+        ingredients: [
+          `2 a 3 bifes altos de picanha ou ancho de 2 dedos (600 g total)`,
+          `2 colheres (sopa) de manteiga com alecrim e tomilho picados`,
+          `Sal de parrilla e pimenta-do-reino moída na hora`
+        ],
+        steps: [
+          `Retire os bifes da geladeira 15 minutos antes e pré-aqueça a Air Fryer a 200 °C por 5 minutos.`,
+          `Tempere os dois lados com sal de parrilla e pimenta e asse a 200 °C por 6 minutos do primeiro lado.`,
+          `Vire os bifes, asse por mais 4 minutos a 200 °C (para ponto ao ponto/malpassado) e finalize no prato com a manteiga de ervas derretendo.`
+        ]
+      },
+      {
+        id: `R023`,
+        num: `#023`,
+        title: `Fraldinha na Mostarda e Alho`,
+        category: `bovina`,
+        time: 22,
+        temp: 190,
+        servings: `4 porções`,
+        technique: `Assado Suculento`,
+        summary: `Peça macia marinada com mostarda e alho que cria crosta saborosa por fora e centro rosado.`,
+        tip: `Deixe a carne descansar por 5 minutos na tábua antes de fatiar contra as fibras para os sucos se redistribuírem.`,
+        ingredients: [
+          `1 peça pequena de fraldinha limpa (cerca de 800 g)`,
+          `2 colheres (sopa) de mostarda amarela ou Dijon`,
+          `3 dentes de alho amassados e 1 colher (sopa) de azeite`,
+          `Sal grosso triturado e pimenta-do-reino`
+        ],
+        steps: [
+          `Misture a mostarda, o alho, o azeite, o sal e a pimenta formando uma pasta e espalhe por toda a fraldinha.`,
+          `Pré-aqueça a Air Fryer a 190 °C por 4 minutos e acomode a peça com a gordura voltada para cima por 12 minutos.`,
+          `Vire a peça e asse por mais 10 minutos a 190 °C; deixe descansar 5 minutos antes de fatiar contra as fibras.`
+        ]
+      },
+      {
+        id: `R024`,
+        num: `#024`,
+        title: `Maminha Suculenta em Dupla Temperatura`,
+        category: `bovina`,
+        time: 28,
+        temp: 180,
+        servings: `4 porções`,
+        technique: `Dupla Temperatura`,
+        summary: `Cozimento suave no papel-alumínio a 180 °C seguido de finalização a 200 °C para pururucar a capa de gordura.`,
+        tip: `A técnica de dupla temperatura evita que o exterior queime antes do centro cozinhar em peças altas.`,
+        ingredients: [
+          `1 peça pequena de maminha (800 g)`,
+          `2 colheres (sopa) de manteiga em pomada`,
+          `Salsa, alecrim e 3 dentes de alho picados`,
+          `Sal grosso triturado a gosto`
+        ],
+        steps: [
+          `Espalhe o sal e a manteiga de ervas por toda a superfície da maminha e envolva firmemente em papel-alumínio.`,
+          `Asse na Air Fryer a 180 °C por 18 minutos para cozinhar mantendo todos os sucos internos.`,
+          `Abra o papel-alumínio com cuidado, aumente a temperatura para 200 °C e deixe mais 10 minutos descoberta até dourar a capa de gordura.`
+        ]
+      },
+      {
+        id: `R025`,
+        num: `#025`,
+        title: `Contrafilé Acebolado de Frigideira de Ar`,
+        category: `bovina`,
+        time: 11,
+        temp: 200,
+        servings: `3 porções`,
+        technique: `Rápida 200 °C`,
+        summary: `Bifes dourados com cebolas caramelizadas no fundo do cesto em apenas 11 minutos e zero respingo no fogão.`,
+        tip: `Coloque as rodelas de cebola nos últimos 5 minutos sobre os bifes já virados para ficarem macias sem queimar.`,
+        ingredients: [
+          `3 bifes de contrafilé médios (500 g)`,
+          `2 cebolas grandes em rodelas temperadas com 1 colher (chá) de shoyu`,
+          `1 colher (sopa) de azeite, sal e pimenta-do-reino`
+        ],
+        steps: [
+          `Pré-aqueça a Air Fryer a 200 °C por 4 minutos. Pincele os bifes com azeite, tempere com sal e pimenta e asse por 6 minutos.`,
+          `Vire os bifes, distribua as rodelas de cebola com shoyu por cima e ao redor.`,
+          `Asse por mais 5 minutos a 200 °C até a cebola murchar e dourar nas bordas.`
+        ]
+      },
+      {
+        id: `R026`,
+        num: `#026`,
+        title: `Almôndegas Carnudas e Macias`,
+        category: `bovina`,
+        time: 16,
+        temp: 190,
+        servings: `4 porções`,
+        technique: `Sem Excesso de Óleo`,
+        summary: `Almôndegas suculentas por dentro e douradas por fora, perfeitas para acompanhar massas ou servir com molho.`,
+        tip: `Não aperte demais a carne ao bolear e use cebola bem ralada para manter umidade natural dentro da almôndega.`,
+        ingredients: [
+          `500 g de carne moída (patinho ou acém)`,
+          `1 ovo e 3 colheres (sopa) de farinha de rosca`,
+          `1/2 cebola ralada e 2 dentes de alho picados`,
+          `Cheiro-verde, sal, pimenta-do-reino e 1 fio de azeite`
+        ],
+        steps: [
+          `Misture a carne moída com ovo, farinha de rosca, cebola, alho, cheiro-verde, sal e pimenta até dar liga leve.`,
+          `Modele bolinhas de tamanho uniforme, pincele ou borrife azeite e disponha no cesto pré-aquecido a 190 °C sem encostar.`,
+          `Asse por 16 minutos a 190 °C, sacudindo o cesto aos 8 minutos para dourar por igual.`
+        ]
+      },
+      {
+        id: `R028`,
+        num: `#028`,
+        title: `Cupim Macio em Etapas com Sal Grosso`,
+        category: `bovina`,
+        time: 65,
+        temp: 180,
+        servings: `5 porções`,
+        technique: `Dupla Temperatura`,
+        summary: `Carne de almoço de domingo preparada em duas etapas para desmanchar ao fatiar, sem usar churrasqueira.`,
+        tip: `Mantenha o papel-alumínio bem vedado na primeira fase (50 min a 180 °C) para o colágeno derreter por completo.`,
+        ingredients: [
+          `1 peça de cupim limpa (cerca de 900 g)`,
+          `2 colheres (sopa) de azeite`,
+          `Sal grosso triturado, alho em pasta e pimenta-do-reino`
+        ],
+        steps: [
+          `Tempere o cupim com alho, azeite, pimenta e sal grosso. Embrulhe em duas voltas de papel-alumínio bem vedadas.`,
+          `Asse na Air Fryer a 180 °C por 50 minutos.`,
+          `Retire o papel-alumínio com cuidado, aumente para 200 °C e doure por mais 15 minutos até criar crosta apetitosa; fatie na hora de servir.`
+        ]
+      },
+
+      // --- CARNES SUÍNAS ---
+      {
+        id: `R009`,
+        num: `#009`,
+        title: `Costelinha Suína ao Molho Barbecue`,
+        category: `suina`,
+        time: 50,
+        temp: 180,
+        servings: `4 porções`,
+        technique: `Alumínio + Glaceado`,
+        summary: `Costelinha que solta do osso com crosta caramelizada agridoce de barbecue aplicada na etapa final.`,
+        tip: `Nunca passe o barbecue no começo: açúcares queimam acima de 190 °C. Aplique apenas nos últimos 10 minutos!`,
+        ingredients: [
+          `900 g de costelinha de porco limpa`,
+          `Suco de 1 limão, 3 dentes de alho picados, páprica e sal`,
+          `1/2 xícara (chá) de molho barbecue`
+        ],
+        steps: [
+          `Tempere a costelinha com limão, alho, páprica e sal; embrulhe em papel-alumínio e leve à Air Fryer a 180 °C por 40 minutos.`,
+          `Abra o papel-alumínio, pincele o molho barbecue por toda a superfície da carne.`,
+          `Aumente para 200 °C e asse descoberta por mais 10 minutos até caramelizar e formar crosta brilhante.`
+        ]
+      },
+      {
+        id: `R021`,
+        num: `#021`,
+        title: `Torresmo / Panceta Pururucada em Cubos`,
+        category: `suina`,
+        time: 30,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Pururuca Sem Óleo`,
+        summary: `Barriga de porco com couro estalando e quase toda a gordura escorrida para o fundo da cuba.`,
+        tip: `Sacudir o cesto a cada 8 minutos e escorrer a banha acumulada no fundo evita fumaça e garante pururuca uniforme.`,
+        ingredients: [
+          `600 g de panceta (barriga de porco) em cubos médios`,
+          `1 colher (sopa) de cachaça ou vinagre (ajuda a pururucar o couro)`,
+          `Sal e pimenta-do-reino a gosto`
+        ],
+        steps: [
+          `Tempere os cubos de panceta secos com sal, pimenta e cachaça, massageando bem.`,
+          `Disponha no cesto a 190 °C por 20 minutos, sacudindo aos 8 e aos 16 minutos e escorrendo a gordura da cuba se necessário.`,
+          `Aumente para 200 °C e deixe mais 8 a 10 minutos até a pele pururucar e estalar.`
+        ]
+      },
+      {
+        id: `R023S`,
+        num: `#023S`,
+        title: `Bisteca / Copa Lombo Suíno Suculento`,
+        category: `suina`,
+        time: 15,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Selagem Rápida`,
+        summary: `Bistecas macias e douradas, com corte estratégico na borda para não entortarem durante o preparo.`,
+        tip: `Dê 2 pequenos talhos na borda de gordura de cada bisteca antes de temperar para manter a fatia plana no cesto.`,
+        ingredients: [
+          `4 fatias de bisteca ou copa lombo suíno (600 g)`,
+          `1 colher (sopa) de maionese e 1 colher (chá) de mostarda`,
+          `Alho em pó, limão, sal e pimenta-do-reino`
+        ],
+        steps: [
+          `Faça 2 talhos leves na borda de gordura das bistecas e envolva com limão, alho, sal, pimenta, maionese e mostarda.`,
+          `Pré-aqueça a Air Fryer a 200 °C por 4 minutos e disponha as fatias sem sobrepor.`,
+          `Asse por 15 minutos a 200 °C, virando todas as bistecas aos 8 minutos.`
+        ]
+      },
+      {
+        id: `R011S`,
+        num: `#011S`,
+        title: `Linguiça Toscana Recheada com Muçarela`,
+        category: `suina`,
+        time: 20,
+        temp: 190,
+        servings: `4 porções`,
+        technique: `Gratinado Recheado`,
+        summary: `Gomos abertos ao meio e recheados com creme de muçarela, tomate, cebola e ervas.`,
+        tip: `Asse os gomos inteiros nos primeiros 10 minutos antes de abrir e rechear para não perderem o formato.`,
+        ingredients: [
+          `4 gomos de linguiça toscana fresca`,
+          `150 g de muçarela ralada`,
+          `1 tomate picado sem sementes, 1/2 cebola picada e 2 colheres (sopa) de requeijão ou nata`,
+          `Orégano e cheiro-verde`
+        ],
+        steps: [
+          `Asse as linguiças inteiras na Air Fryer a 190 °C por 10 minutos. Retire e faça um corte longitudinal profundo sem separar as metades.`,
+          `Misture a muçarela, tomate, cebola, requeijão e orégano e recheie generosamente cada gomo.`,
+          `Retorne ao cesto a 190 °C por mais 8 a 10 minutos até o recheio gratinar e borbulhar.`
+        ]
+      },
+
+      // --- AVES ---
+      {
+        id: `R052`,
+        num: `#052`,
+        title: `Tulipa de Frango Super Crocante com Mel`,
+        category: `aves`,
+        time: 22,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Segredo do Amido`,
+        summary: `Meio da asa dourado com película vítrea estaladiça graças ao truque do amido de milho e fio de mel no final.`,
+        tip: `Polvilhe 1 colher (sopa) rasa de amido de milho nos temperos secos: ele absorve a umidade da pele e cria crocância de fritura.`,
+        ingredients: [
+          `700 g de tulipas (meio da asa) bem secas`,
+          `1 colher (sopa) rasa de amido de milho`,
+          `1 colher (chá) de páprica defumada, lemon pepper, alho em pó e sal`,
+          `1 fio de mel para finalizar`
+        ],
+        steps: [
+          `Tempere as tulipas secas com páprica, lemon pepper, alho em pó e sal; polvilhe o amido de milho envolvendo cada peça.`,
+          `Disponha no cesto pré-aquecido a 200 °C em camada única por 12 minutos.`,
+          `Sacuda o cesto, asse por mais 10 minutos a 200 °C e finalize ainda quente com um fio leve de mel.`
+        ]
+      },
+      {
+        id: `R054`,
+        num: `#054`,
+        title: `Filé de Peito de Frango Suculento`,
+        category: `aves`,
+        time: 12,
+        temp: 190,
+        servings: `4 porções`,
+        technique: `Precisão de Tempo`,
+        summary: `Filés macios e úmidos marinados em limão, azeite e ervas, assados no tempo exato para nunca ressecar.`,
+        tip: `Não ultrapasse 12 minutos para filés médios (1,5 cm): o peito de frango perde suculência rapidamente se passar do ponto.`,
+        ingredients: [
+          `500 g de filé de peito de frango (espessura uniforme de 1,5 cm)`,
+          `Suco de 1/2 limão e 2 colheres (sopa) de azeite`,
+          `2 dentes de alho picados, alecrim, orégano, páprica doce e sal`
+        ],
+        steps: [
+          `Marine os filés no azeite, limão, alho, alecrim, páprica e sal por 10 minutos e pré-aqueça a Air Fryer a 190 °C.`,
+          `Coloque os filés no cesto sem sobrepor e asse por exatos 7 minutos a 190 °C.`,
+          `Vire os filés e deixe apenas mais 5 minutos a 190 °C para selar mantendo o interior suculento.`
+        ]
+      },
+      {
+        id: `R055`,
+        num: `#055`,
+        title: `Frango à Parmegiana Crocante Sem Fritura`,
+        category: `aves`,
+        time: 16,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Empanamento Panko`,
+        summary: `Filés empanados crocantes cobertos com molho de tomate e queijo derretido sem sujeira na cozinha.`,
+        tip: `Borrife azeite na farinha Panko antes de assar para eliminar o aspecto seco e obter dourado uniforme.`,
+        ingredients: [
+          `4 filés de peito de frango temperados com alho e sal`,
+          `1 ovo batido e 1 xícara (chá) de farinha Panko`,
+          `1 xícara (chá) de molho de tomate`,
+          `150 g de queijo muçarela fatiado e orégano`
+        ],
+        steps: [
+          `Passe os filés no ovo batido e pressione na farinha Panko; borrife um fio de azeite por cima.`,
+          `Asse no cesto da Air Fryer a 200 °C por 12 minutos (virando aos 7 minutos) até o empanado ficar crocante.`,
+          `Cubra cada filé com molho de tomate, muçarela e orégano, retornando por mais 4 minutos a 200 °C para derreter.`
+        ]
+      },
+      {
+        id: `R014A`,
+        num: `#014A`,
+        title: `Frango a Passarinho com Maionese e Alho`,
+        category: `aves`,
+        time: 24,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Maionese Condutora`,
+        summary: `Pedaços com casquinha dourada e carne extremamente macia graças à marinada cremosa de maionese.`,
+        tip: `A maionese substitui o óleo e ajuda a pele a dourar uniformemente sem ressecar os cortes com osso.`,
+        ingredients: [
+          `800 g de frango cortado a passarinho`,
+          `2 colheres (sopa) de maionese`,
+          `5 dentes de alho picados, suco de 1/2 limão, sal e salsinha`
+        ],
+        steps: [
+          `Misture o frango com a maionese, alho, limão e sal e deixe descansar por 15 minutos para pegar gosto.`,
+          `Disponha no cesto pré-aquecido a 200 °C e asse por 14 minutos.`,
+          `Sacuda o cesto ou vire os pedaços e asse por mais 10 minutos a 200 °C até dourar; finalize com salsinha.`
+        ]
+      },
+      {
+        id: `R056`,
+        num: `#056`,
+        title: `Coxa e Sobrecoxa com Pele Crocante`,
+        category: `aves`,
+        time: 28,
+        temp: 195,
+        servings: `4 porções`,
+        technique: `Pele para Baixo 1º`,
+        summary: `Coxas e sobrecoxas suculentas por dentro com pele dourada e pururucada sem precisar de forno.`,
+        tip: `Inicie os primeiros 15 minutos com a pele voltada para baixo e vire depois: assim a gordura derrete antes de dourar a pele.`,
+        ingredients: [
+          `900 g de coxas e sobrecoxas com pele`,
+          `1 colher (sopa) de mostarda e 1 colher (sopa) de shoyu`,
+          `Suco de 1/2 limão, páprica, alho e sal`
+        ],
+        steps: [
+          `Tempere as peças com mostarda, shoyu, limão, páprica, alho e sal (deixe marinar 20 minutos se possível).`,
+          `Acomode no cesto a 190 °C com a pele voltada para baixo por 15 minutos.`,
+          `Vire com a pele para cima, aumente para 200 °C e asse por mais 13 minutos até a pele ficar crocante.`
+        ]
+      },
+      {
+        id: `R015A`,
+        num: `#015A`,
+        title: `Coração de Frango Dourado com Shoyu`,
+        category: `aves`,
+        time: 12,
+        temp: 200,
+        servings: `3 porções`,
+        technique: `Alta Temp. Rápida`,
+        summary: `Corações macios e suculentos preparados em apenas 12 minutos, finalizados com raspas de limão.`,
+        tip: `Cozimento rápido em temperatura máxima (200 °C) é essencial — tempos longos endurecem o coração de frango.`,
+        ingredients: [
+          `500 g de coração de frango limpo`,
+          `1 colher (sopa) de manteiga derretida e 2 colheres (sopa) de shoyu`,
+          `1 cebola em meias-luas, alho picado e raspas de limão`
+        ],
+        steps: [
+          `Marine os corações no shoyu, alho e manteiga por 10 minutos.`,
+          `Pré-aqueça a Air Fryer a 200 °C por 4 minutos e asse os corações por 7 minutos.`,
+          `Junte a cebola, sacuda o cesto e asse por mais 4 a 5 minutos a 200 °C; finalize com raspas de limão.`
+        ]
+      },
+
+      // --- PEIXES & FRUTOS DO MAR ---
+      {
+        id: `R025P`,
+        num: `#025P`,
+        title: `Posta de Salmão com Molho de Maracujá`,
+        category: `pescados`,
+        time: 12,
+        temp: 200,
+        servings: `2 porções`,
+        technique: `Pele para Baixo`,
+        summary: `Salmão em lascas suculentas pronto em 12 minutos, acompanhado de redução agridoce de maracujá.`,
+        tip: `Coloque as postas com a pele voltada para baixo e não precisa virar — isso protege a carne delicada de quebrar.`,
+        ingredients: [
+          `400 g de salmão em 2 postas altas com pele`,
+          `Azeite, sal, pimenta-do-reino e suco de 1/2 limão`,
+          `Polpa de 1 maracujá, 1 colher (sopa) de açúcar e 1 colher (chá) de manteiga para o molho`
+        ],
+        steps: [
+          `Tempere as postas com sal, pimenta, limão e pincele azeite. Disponha no cesto a 200 °C com a pele para baixo por 10 a 12 minutos sem virar.`,
+          `Enquanto o salmão assa, reduza rapidamente a polpa de maracujá com o açúcar e a manteiga em uma panelinha por 4 minutos.`,
+          `Sirva as postas douradas regadas com o molho quente de maracujá.`
+        ]
+      },
+      {
+        id: `R070P`,
+        num: `#070P`,
+        title: `Filé de Tilápia Crocante no Fubá e Panko`,
+        category: `pescados`,
+        time: 14,
+        temp: 195,
+        servings: `3 porções`,
+        technique: `Empanado Sequinho`,
+        summary: `Tilápia com casquinha dourada e carne úmida em lascas brancas, sem fritura e sem cheiro na cozinha.`,
+        tip: `Unte levemente a grelha do cesto antes de colocar o peixe empanado para que a crosta não grude ao virar.`,
+        ingredients: [
+          `500 g de filé de tilápia seco em papel-toalha`,
+          `Limão, alho em pó, sal e pimenta-do-reino`,
+          `1 ovo batido e 1 xícara de mistura meio a meio de Panko e fubá mimoso`,
+          `Azeite em spray ou pincel`
+        ],
+        steps: [
+          `Tempere os filés secos com limão, alho, sal e pimenta; passe pelo ovo batido e pressione na mistura de Panko e fubá.`,
+          `Unte levemente o cesto pré-aquecido a 195 °C, acomode os filés e borrife azeite.`,
+          `Asse por 12 a 14 minutos, virando na metade com espátula larga.`
+        ]
+      },
+      {
+        id: `R071P`,
+        num: `#071P`,
+        title: `Tilápia no Papillote com Legumes`,
+        category: `pescados`,
+        time: 22,
+        temp: 185,
+        servings: `2 porções`,
+        technique: `Papillote / Vapor`,
+        summary: `Técnica francesa adaptada para a Air Fryer: o peixe cozinha no próprio vapor dentro do papel sem ressecar.`,
+        tip: `Feche bem as bordas do papel-alumínio ou papel-manteiga deixando um pequeno espaço interno para o vapor circular.`,
+        ingredients: [
+          `2 filés de tilápia (350 g)`,
+          `1 tomate, 1/2 cebola e 1/2 pimentão em fatias finas`,
+          `2 dentes de alho, azeite, suco de 1/2 limão, sal e cheiro-verde`
+        ],
+        steps: [
+          `Sobre duas folhas de papel-alumínio, faça uma cama com cebola, tomate e pimentão e apoie os filés temperados com sal, alho, limão e azeite.`,
+          `Feche as trouxinhas dobrando bem todas as pontas para vedar o vapor.`,
+          `Asse na Air Fryer a 185 °C por 20 a 22 minutos e sirva direto no papel aberto.`
+        ]
+      },
+      {
+        id: `R074`,
+        num: `#074`,
+        title: `Atum Selado em Crosta de Gergelim`,
+        category: `pescados`,
+        time: 6,
+        temp: 200,
+        servings: `2 porções`,
+        technique: `Selagem Máxima 6 min`,
+        summary: `Lombos altos de atum com crosta tostada de gergelim preto e branco e interior rosado suculento.`,
+        tip: `Pré-aqueça a 200 °C por 5 minutos inteiros: o choque térmico sela o exterior em apenas 6 minutos mantendo o centro rosado.`,
+        ingredients: [
+          `2 lombos altos de atum fresco (400 g)`,
+          `2 colheres (sopa) de shoyu e 1 colher (sopa) de óleo de gergelim`,
+          `1/2 xícara (chá) de gergelim preto e branco misturados`
+        ],
+        steps: [
+          `Pré-aqueça a Air Fryer na potência máxima (200 °C) por 5 minutos.`,
+          `Pincele os lombos de atum com o shoyu e óleo de gergelim e pressione todos os lados no mix de gergelim.`,
+          `Asse no cesto a 200 °C por 6 minutos (3 minutos de cada lado) e fatie imediatamente.`
+        ]
+      },
+      {
+        id: `R107`,
+        num: `#107`,
+        title: `Camarão Empanado Sequinho na Panko`,
+        category: `pescados`,
+        time: 9,
+        temp: 200,
+        servings: `3 porções`,
+        technique: `Atenção ao Tempo`,
+        summary: `Camarões grandes crocantes por fora e suculentos por dentro em menos de 10 minutos.`,
+        tip: `Atenção máxima ao cronômetro: passar de 10 minutos deixa o camarão borrachudo.`,
+        ingredients: [
+          `400 g de camarão grande limpo e bem seco`,
+          `Suco de 1/2 limão, alho em pó, sal e pimenta`,
+          `1 ovo batido e 1 xícara (chá) de farinha Panko + fio de azeite`
+        ],
+        steps: [
+          `Tempere os camarões secos com limão, alho, sal e pimenta. Passe no ovo e envolva na farinha Panko.`,
+          `Disponha no cesto pré-aquecido a 200 °C em camada única e borrife azeite.`,
+          `Asse por 8 a 9 minutos a 200 °C, virando aos 5 minutos.`
+        ]
+      },
+      {
+        id: `R079`,
+        num: `#079`,
+        title: `Patolas de Caranguejo na Manteiga de Alho`,
+        category: `pescados`,
+        time: 8,
+        temp: 190,
+        servings: `3 porções`,
+        technique: `Gratinado Rápido`,
+        summary: `Petisco litorâneo prático finalizado com manteiga de garrafa aromática e cobertura crocante de Panko.`,
+        tip: `Use um refratário raso que caiba com folga no cesto para que a manteiga aromatizada não escorra pelas frestas.`,
+        ingredients: [
+          `400 g de patolas de caranguejo limpas`,
+          `2 colheres (sopa) de manteiga de garrafa derretida`,
+          `3 dentes de alho picados, coentro e suco de 1/2 limão`,
+          `2 colheres (sopa) de farinha Panko`
+        ],
+        steps: [
+          `Disponha as patolas de caranguejo em refratário raso e regue com o limão e a manteiga misturada ao alho e coentro.`,
+          `Salpique a farinha Panko por cima para dar textura crocante.`,
+          `Asse na Air Fryer a 190 °C por 8 minutos até dourar a cobertura.`
+        ]
+      },
+
+      // --- FITNESS & FUNCIONAIS ---
+      {
+        id: `R096`,
+        num: `#096`,
+        title: `Tiras de Frango em Crosta de Aveia e Linhaça`,
+        category: `fitness`,
+        time: 14,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Empanamento Funcional`,
+        summary: `Iscas proteicas ricas em fibras com crosta crocante de aveia, linhaça dourada e gergelim.`,
+        tip: `Use clara de ovo batida para fixar as sementes sem adicionar gordura extra à receita.`,
+        ingredients: [
+          `500 g de filé de peito de frango em tiras`,
+          `1 clara de ovo levemente batida`,
+          `1/2 xícara de farelo de aveia, 2 colheres (sopa) de linhaça e 2 de gergelim`,
+          `Cúrcuma, alho em pó e sal`
+        ],
+        steps: [
+          `Tempere as tiras de frango com cúrcuma, alho e sal. Passe na clara batida e pressione na mistura de aveia, linhaça e gergelim.`,
+          `Acomode no cesto pré-aquecido a 200 °C sem sobrepor.`,
+          `Asse por 14 minutos a 200 °C, virando na metade do tempo.`
+        ]
+      },
+      {
+        id: `R099`,
+        num: `#099`,
+        title: `Falafel Crocante de Grão-de-Bico`,
+        category: `fitness`,
+        time: 15,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `100% Vegetal`,
+        summary: `Bolinhos árabes aromáticos com cominho, coentro e salsinha, assados sequinhos para servir com molho de iogurte.`,
+        tip: `Use grão-de-bico hidratado cru (de molho por 12h) em vez de cozido: ele dá a liga firme sem desmanchar nem precisar de farinha.`,
+        ingredients: [
+          `250 g de grão-de-bico cru hidratado por 12h e bem escorrido`,
+          `1/2 cebola, 2 dentes de alho e 1 maço pequeno de salsinha e coentro`,
+          `1 colher (chá) de cominho em pó, sal e 1 colher (sopa) de azeite`
+        ],
+        steps: [
+          `Processe o grão-de-bico escorrido com cebola, alho, ervas, cominho e sal até formar uma farofa úmida que dê liga ao apertar.`,
+          `Modele bolinhos achatados, pincele com azeite e disponha no cesto pré-aquecido a 200 °C.`,
+          `Asse por 15 minutos a 200 °C, virando aos 8 minutos até ficarem dourados por fora.`
+        ]
+      },
+      {
+        id: `R100`,
+        num: `#100`,
+        title: `Coxinha Fit de Batata-Doce com Frango`,
+        category: `fitness`,
+        time: 15,
+        temp: 200,
+        servings: `6 unidades`,
+        technique: `Massa Funcional`,
+        summary: `Salgado leve com massa cremosa de batata-doce cozida, recheio de frango desfiado e casquinha de aveia.`,
+        tip: `Asse a batata-doce ou cozinhe no vapor para que a massa não absorva água em excesso e fique fácil de modelar.`,
+        ingredients: [
+          `300 g de batata-doce cozida e amassada ainda quente`,
+          `200 g de frango cozido, desfiado e refogado com tomate e cebola`,
+          `2 colheres (sopa) de farelo de aveia (para empanar)`,
+          `1 gema ou fio de azeite, sal e orégano`
+        ],
+        steps: [
+          `Tempere o purê de batata-doce com sal e orégano; abra porções na palma da mão, recheie com frango desfiado e modele em formato de coxinha.`,
+          `Passe levemente na gema ou azeite e empane no farelo de aveia.`,
+          `Asse na Air Fryer pré-aquecida a 200 °C por 15 minutos até dourar.`
+        ]
+      },
+      {
+        id: `R101`,
+        num: `#101`,
+        title: `Toast de Batata-Doce com Ricota e Abacate`,
+        category: `fitness`,
+        time: 14,
+        temp: 190,
+        servings: `2 porções`,
+        technique: `Low Carb Natural`,
+        summary: `Fatias longitudinais de batata-doce tostadas que substituem o pão no café da manhã ou lanche proteico.`,
+        tip: `Corte fatias de cerca de 0,8 cm no sentido do comprimento para ficarem macias no centro e firmes para segurar a cobertura.`,
+        ingredients: [
+          `1 batata-doce grande lavada e fatiada no comprimento (0,8 cm)`,
+          `4 colheres (sopa) de creme de ricota`,
+          `1/2 abacate amassado com gotas de limão e sal`,
+          `Sementes de chia e fio de azeite`
+        ],
+        steps: [
+          `Pincele as fatias de batata-doce com azeite e uma pitada de sal.`,
+          `Asse no cesto da Air Fryer a 190 °C por 14 minutos (virando na metade) até ficarem macias no centro e tostadas nas bordas.`,
+          `Cubra as fatias quentes com o creme de ricota, o abacate temperado e salpique sementes de chia.`
+        ]
+      },
+      {
+        id: `R102`,
+        num: `#102`,
+        title: `Almôndegas Fit de Patinho com Abobrinha`,
+        category: `fitness`,
+        time: 14,
+        temp: 190,
+        servings: `4 porções (12 un.)`,
+        technique: `Umidade Natural`,
+        summary: `Carne magra com abobrinha ralada que garante maciez incrível sem precisar de gordura ou fritura.`,
+        tip: `Esprema bem a abobrinha ralada em pano limpo antes de misturar à carne para que a água não desmanche a bolinha.`,
+        ingredients: [
+          `400 g de patinho bovino moído`,
+          `1/2 abobrinha ralada fina e bem espremida`,
+          `3 colheres (sopa) de farelo de aveia`,
+          `Alho, cebola picada, salsinha, sal e pimenta`
+        ],
+        steps: [
+          `Misture o patinho moído com a abobrinha espremida, o farelo de aveia, alho, cebola, salsinha, sal e pimenta.`,
+          `Modele 12 almôndegas e disponha no cesto pré-aquecido a 190 °C.`,
+          `Asse por 14 minutos a 190 °C, sacudindo na metade do tempo.`
+        ]
+      },
+      {
+        id: `R056F`,
+        num: `#056F`,
+        title: `Tofu Crocante Temperado em Cubinhos`,
+        category: `fitness`,
+        time: 18,
+        temp: 190,
+        servings: `2 porções`,
+        technique: `100% Vegetal`,
+        summary: `Cubos de tofu firme com crosta saborosa de páprica defumada e levedura nutricional, prontos para saladas ou bowls.`,
+        tip: `Prensar o tofu em papel-toalha por 15 minutos antes de cortar é o segredo para ele ficar crocante por fora.`,
+        ingredients: [
+          `250 g de tofu firme prensado e cortado em cubos`,
+          `1 colher (sopa) de azeite e 1 colher (sopa) de shoyu`,
+          `1 colher (sopa) de levedura nutricional (ou amido de milho)`,
+          `1/2 colher (chá) de páprica defumada e pimenta-do-reino`
+        ],
+        steps: [
+          `Misture os cubos de tofu secos com o shoyu e o azeite; polvilhe a levedura nutricional e a páprica envolvendo suavemente.`,
+          `Espalhe em camada única no cesto da Air Fryer a 190 °C.`,
+          `Asse por 18 minutos, sacudindo o cesto aos 9 minutos até todas as faces dourarem.`
+        ]
+      },
+
+      // --- PETISCOS DE BOTECO ---
+      {
+        id: `R114B`,
+        num: `#114B`,
+        title: `Dadinho de Tapioca com Queijo Coalho`,
+        category: `boteco`,
+        time: 14,
+        temp: 200,
+        servings: `6 porções`,
+        technique: `Petisco Clássico`,
+        summary: `Cubinhos dourados que estufam levemente por fora e derretem na boca, servidos com geleia de pimenta.`,
+        tip: `Use tapioca granulada (não a goma hidratada) e deixe firmar na geladeira por pelo menos 2 horas antes de cortar os cubos.`,
+        ingredients: [
+          `250 g de tapioca granulada (não é goma hidratada)`,
+          `250 g de queijo coalho ralado fino`,
+          `500 ml de leite integral fervendo`,
+          `Sal, pimenta-branca e geleia de pimenta para servir`
+        ],
+        steps: [
+          `Misture a tapioca granulada e o queijo coalho com o leite fervendo, sal e pimenta, mexendo até engrossar; espalhe em forma forrada com plástico e gele por 2 horas até firmar.`,
+          `Corte em cubos de 2,5 cm e disponha no cesto da Air Fryer pré-aquecida sem encostar um no outro.`,
+          `Asse a 200 °C por 14 minutos (virando na metade) até estufarem e dourarem; sirva com geleia de pimenta.`
+        ]
+      },
+      {
+        id: `R125`,
+        num: `#125`,
+        title: `Amendoim Torrado de Boteco com Alho e Limão`,
+        category: `boteco`,
+        time: 12,
+        temp: 160,
+        servings: `6 porções`,
+        technique: `Torra a 160 °C`,
+        summary: `Amendoim crocante temperado com limão, páprica picante e lâminas de alho douradas na temperatura certa.`,
+        tip: `Ele sai levemente macio do cesto quente e termina de ficar super crocante enquanto esfria na travessa.`,
+        ingredients: [
+          `500 g de amendoim cru com pele`,
+          `Suco de 1/2 limão e 1 colher (sopa) de azeite`,
+          `3 dentes de alho laminados`,
+          `1 colher (chá) de páprica picante e sal fino`
+        ],
+        steps: [
+          `Misture o amendoim cru com o suco de limão, o azeite, a páprica e o sal.`,
+          `Leve ao cesto da Air Fryer a 160 °C por 8 minutos, sacudindo vigorosamente a cada 4 minutos.`,
+          `Junte o alho laminado, mexa e asse por mais 4 minutos a 160 °C; deixe esfriar antes de servir.`
+        ]
+      },
+      {
+        id: `R067`,
+        num: `#067`,
+        title: `Pastel Crocante na Air Fryer (Sem Óleo)`,
+        category: `boteco`,
+        time: 12,
+        temp: 190,
+        servings: `6 unidades`,
+        technique: `Massa Fresca + Pincelada`,
+        summary: `Pastel sequinho de massa fresca com recheio à escolha e bolhinhas douradas sem engordurar a cozinha.`,
+        tip: `O truque para a massa não ressecar é pincelar uma camada bem fina de óleo ou gema antes de levar ao cesto pré-aquecido.`,
+        ingredients: [
+          `6 discos de massa de pastel fresca`,
+          `200 g de recheio pronto (frango cremoso, carne moída ou queijo com tomate)`,
+          `1 colher (sopa) de azeite ou 1 gema para pincelar`
+        ],
+        steps: [
+          `Recheie os discos de massa fresca, umedeça levemente as bordas com água e sele bem apertando com um garfo.`,
+          `Pincele os dois lados com um fio bem fino de azeite (ou gema por cima).`,
+          `Asse no cesto pré-aquecido a 190 °C por 10 a 12 minutos, virando aos 6 minutos até dourar.`
+        ]
+      },
+      {
+        id: `R097`,
+        num: `#097`,
+        title: `Bolinha de Queijo Sem Glúten (3 Ingredientes)`,
+        category: `boteco`,
+        time: 15,
+        temp: 190,
+        servings: `12 unidades`,
+        technique: `3 Ingredientes`,
+        summary: `Petisco prático e sem glúten que mistura queijo ralado, amido e ovo para derreter por dentro.`,
+        tip: `Mantenha as bolinhas espaçadas no cesto para o ar circular e selar rapidamente o exterior evitando que vazem.`,
+        ingredients: [
+          `200 g de queijo muçarela ou meia cura ralado`,
+          `3 colheres (sopa) de amido de milho`,
+          `1 ovo inteiro e orégano opcional`
+        ],
+        steps: [
+          `Misture o queijo ralado, o amido de milho e o ovo até obter massa lisa e moldável.`,
+          `Modele bolinhas pequenas e disponha no cesto pré-aquecido a 190 °C com espaço entre elas.`,
+          `Asse por 12 a 15 minutos até ficarem douradas e crocantes.`
+        ]
+      },
+      {
+        id: `R105`,
+        num: `#105`,
+        title: `Kibe Crocante com Hortelã Sem Gordura`,
+        category: `boteco`,
+        time: 16,
+        temp: 200,
+        servings: `10 unidades`,
+        technique: `Pincelada de Azeite`,
+        summary: `Kibes clássicos de carne e triguilho super crocantes por fora, perfeitos para servir com coalhada e limão.`,
+        tip: `Hidrate o triguilho em água morna e esprema muito bem no pano antes de amassar com a carne e a hortelã.`,
+        ingredients: [
+          `250 g de carne moída (patinho)`,
+          `1 xícara (chá) de trigo para kibe hidratado e bem espremido`,
+          `1/2 cebola ralada, folhas de hortelã picadas, sal e pimenta síria`,
+          `1 colher (sopa) de azeite para pincelar`
+        ],
+        steps: [
+          `Amasse bem a carne com o trigo espremido, cebola, hortelã, sal e pimenta síria até ficar homogêneo.`,
+          `Modele os kibes, pincele com azeite e acomode no cesto pré-aquecido a 200 °C.`,
+          `Asse por 16 minutos a 200 °C, virando na metade do tempo.`
+        ]
+      },
+      {
+        id: `R120B`,
+        num: `#120B`,
+        title: `Croquete de Carne Desfiada na Panko`,
+        category: `boteco`,
+        time: 14,
+        temp: 200,
+        servings: `10 unidades`,
+        technique: `Roux + Panko`,
+        summary: `Croquetes cremosos por dentro com casquinha crocante de boteco preparada sem imersão em óleo.`,
+        tip: `Deixe a massa esfriar totalmente antes de modelar os croquetes para conseguir uma textura firme na hora de empanar.`,
+        ingredients: [
+          `300 g de carne cozida bem desfiada`,
+          `1 colher (sopa) de manteiga e 2 colheres (sopa) de farinha de trigo`,
+          `1/2 xícara de caldo do cozimento, 1 ovo batido e farinha Panko`,
+          `Azeite em spray`
+        ],
+        steps: [
+          `Leve a carne desfiada ao fogo com manteiga, farinha e caldo mexendo por 3 minutos até formar massa densa; esfrie e modele 10 croquetes.`,
+          `Passe no ovo batido e pressione na farinha Panko, borrifando azeite por cima.`,
+          `Asse na Air Fryer pré-aquecida a 200 °C por 14 minutos até dourarem por igual.`
+        ]
+      },
+
+      // --- SOBREMESAS ---
+      {
+        id: `R126`,
+        num: `#126`,
+        title: `Banana Assada com Canela e Açúcar Mascavo`,
+        category: `sobremesas`,
+        time: 10,
+        temp: 190,
+        servings: `2 porções`,
+        technique: `Caramelização Express`,
+        summary: `Sobremesa de 10 minutos com açúcar mascavo derretido e aroma de canela, perfeita com uma bola de sorvete.`,
+        tip: `Escolha bananas maduras mas ainda firmes para que não derretam demais ao virar ou retirar com a espátula.`,
+        ingredients: [
+          `2 bananas-nanicas ou da-terra maduras e firmes, cortadas ao meio no comprimento`,
+          `1 colher (sopa) de manteiga derretida`,
+          `1 colher (sopa) de açúcar mascavo e 1 colher (chá) de canela em pó`
+        ],
+        steps: [
+          `Pincele as metades de banana com a manteiga derretida e polvilhe a mistura de açúcar mascavo com canela.`,
+          `Disponha em folha de papel-alumínio com bordas dobradas ou diretamente no cesto untado a 190 °C.`,
+          `Asse por 10 minutos até caramelizar levemente e sirva quente.`
+        ]
+      },
+      {
+        id: `R129`,
+        num: `#129`,
+        title: `Churros Caseiros Crocantes com Doce de Leite`,
+        category: `sobremesas`,
+        time: 12,
+        temp: 200,
+        servings: `4 porções`,
+        technique: `Sem Fritura`,
+        summary: `Massa leve assada no cesto e passada na hora em açúcar com canela, sem encharcar de óleo.`,
+        tip: `Passe os churros na mistura de açúcar e canela ainda quentes logo ao sair do cesto para os cristais aderirem melhor.`,
+        ingredients: [
+          `1 xícara (chá) de água e 2 colheres (sopa) de manteiga`,
+          `1 xícara (chá) de farinha de trigo e 1 pitada de sal`,
+          `1 ovo inteiro`,
+          `Açúcar com canela para polvilhar e doce de leite para servir`
+        ],
+        steps: [
+          `Ferva a água com a manteiga e o sal, junte a farinha de uma vez mexendo até desgrudar da panela; amornou, misture o ovo até ficar lisa.`,
+          `Com saco de confeitar (bico pitanga), modele minichurros sobre papel-manteiga furado ou cesto untado e pincele fio de manteiga.`,
+          `Asse a 200 °C por 12 minutos, passe no açúcar com canela e sirva com doce de leite.`
+        ]
+      },
+      {
+        id: `R130`,
+        num: `#130`,
+        title: `Pudim de Leite Condensado Lisinho (Sem Furos)`,
+        category: `sobremesas`,
+        time: 35,
+        temp: 160,
+        servings: `6 porções`,
+        technique: `Temperatura Baixa 160 °C`,
+        summary: `Pudim cremoso e sem furinhos assado em forma de alumínio coberta com papel-alumínio, dispensando o banho-maria.`,
+        tip: `O segredo do pudim liso é bater pouco os ovos (ou peneirar a mistura) e manter a temperatura baixa em 160 °C.`,
+        ingredients: [
+          `1 lata de leite condensado (395 g)`,
+          `1 medida da lata de leite integral`,
+          `3 ovos inteiros e 1 colher (chá) de essência de baunilha`,
+          `1/2 xícara (chá) de açúcar para caramelizar a forma (16 cm)`
+        ],
+        steps: [
+          `Caramelize uma forma de pudim de 16 cm (que caiba com folga no cesto). Misture suavemente leite condensado, leite, ovos e baunilha sem aerar e coe na forma.`,
+          `Cubra a forma firmemente com papel-alumínio e leve à Air Fryer a 160 °C por 30 a 35 minutos até firmar nas bordas e tremer leve no centro.`,
+          `Espere esfriar totalmente e leve à geladeira por 4 horas antes de desenformar.`
+        ]
+      },
+      {
+        id: `R131`,
+        num: `#131`,
+        title: `Cocada Cremosa de Colher Dourada`,
+        category: `sobremesas`,
+        time: 12,
+        temp: 180,
+        servings: `4 porções`,
+        technique: `Gratinado Doce`,
+        summary: `Sobremesa cremosa com topo dourado preparada em ramequins individuais em apenas 12 minutos.`,
+        tip: `Misture coco ralado fresco ou úmido ao leite condensado para garantir cremosidade interna enquanto o topo doura.`,
+        ingredients: [
+          `100 g de coco ralado em flocos`,
+          `1/2 lata de leite condensado`,
+          `100 ml de leite de coco`,
+          `1 gema de ovo peneirada e 1 colher (sopa) de manteiga`
+        ],
+        steps: [
+          `Misture todos os ingredientes em uma tigela e distribua em ramequins untados com manteiga.`,
+          `Leve à Air Fryer pré-aquecida a 180 °C.`,
+          `Asse por 12 minutos até a superfície ficar douradinha e o interior ainda cremoso.`
+        ]
+      },
+      {
+        id: `R111S`,
+        num: `#111S`,
+        title: `Brownie Macio e Casquinha Craquelada`,
+        category: `sobremesas`,
+        time: 18,
+        temp: 165,
+        servings: `6 porções`,
+        technique: `Confeitaria 165 °C`,
+        summary: `Brownie denso de chocolate pronto em 18 minutos de cocção sem precisar aquecer o forno grande.`,
+        tip: `Não asse demais: retire quando o palito sair com pequenas migalhas úmidas grudadas para manter a textura fudgy.`,
+        ingredients: [
+          `150 g de chocolate meio amargo derretido com 80 g de manteiga`,
+          `2 ovos inteiros e 1/2 xícara (chá) de açúcar`,
+          `1/2 xícara (chá) de farinha de trigo e 2 colheres (sopa) de cacau em pó`
+        ],
+        steps: [
+          `Bata os ovos com o açúcar, incorpore o chocolate derretido com manteiga e por último a farinha e o cacau peneirados.`,
+          `Despeje em forma pequena (16 cm) forrada com papel-manteiga.`,
+          `Asse na Air Fryer pré-aquecida a 165 °C por 18 minutos e sirva morno com sorvete.`
+        ]
+      },
+      {
+        id: `R128S`,
+        num: `#128S`,
+        title: `Maçã Assada Recheada com Aveia, Nozes e Mel`,
+        category: `sobremesas`,
+        time: 18,
+        temp: 180,
+        servings: `2 porções`,
+        technique: `Fruta Recheada`,
+        summary: `Maçãs aromáticas recheadas com crumble de aveia, nozes e especiarias, perfeitas para dias frios.`,
+        tip: `Retire o miolo com cuidado sem furar o fundo da maçã para segurar o mel e a manteiga derretida durante o preparo.`,
+        ingredients: [
+          `2 maçãs Gala ou Fuji firmes sem o miolo`,
+          `3 colheres (sopa) de aveia em flocos e 2 colheres (sopa) de nozes picadas`,
+          `1 colher (sopa) de manteiga, 2 colheres (sopa) de mel e canela a gosto`
+        ],
+        steps: [
+          `Escave o miolo das maçãs mantendo o fundo fechado. Misture aveia, nozes, manteiga, metade do mel e canela.`,
+          `Recheie o centro das maçãs pressionando bem e acomode em cumbuquinha ou direto no cesto a 180 °C.`,
+          `Asse por 18 minutos até ficarem macias; regue com o restante do mel nos últimos 3 minutos.`
+        ]
+      },
+
+      // --- PÃES & CONFEITARIA FINA ---
+      {
+        id: `R074P`,
+        num: `#074P`,
+        title: `Pão de Queijo Caseiro ou Congelado`,
+        category: `paes`,
+        time: 15,
+        temp: 180,
+        servings: `10 unidades`,
+        technique: `180 °C (Nunca 200 °C)`,
+        summary: `Pãezinhos crescidos por igual com casca dourada e miolo macio, sem queimar por fora e ficar cru no centro.`,
+        tip: `Jamais use 200 °C no pão de queijo: a temperatura de 180 °C dá tempo para o polvilho expandir antes de formar casca.`,
+        ingredients: [
+          `10 unidades de pão de queijo caseiro ou congelado (ou massa: 250 g polvilho azedo, 100 ml leite, 50 ml óleo, 1 ovo e 150 g queijo meia cura)`
+        ],
+        steps: [
+          `Se fizer a massa caseira, escalde o polvilho com leite e óleo fervendo, esfrie, incorpore o ovo e o queijo e modele bolinhas.`,
+          `Disponha 8 a 10 bolinhas no cesto a 180 °C deixando espaço de 1,5 cm entre elas (não precisa untar).`,
+          `Asse a 180 °C por 12 a 15 minutos até crescerem e dourarem por igual.`
+        ]
+      },
+      {
+        id: `R142`,
+        num: `#142`,
+        title: `Focaccia Rápida de Alecrim e Tomate-Cereja`,
+        category: `paes`,
+        time: 16,
+        temp: 180,
+        servings: `4 porções`,
+        technique: `Panificação Express`,
+        summary: `Pão italiano perfumado com azeite extravirgem, tomates-cereja doces e cristais de flor de sal.`,
+        tip: `Faça furinhos com os dedos untados em azeite antes de colocar o alecrim e o tomate para criar a textura típica da focaccia.`,
+        ingredients: [
+          `1,5 xícara (chá) de farinha de trigo e 1 colher (chá) de fermento biológico seco`,
+          `3/4 xícara (chá) de água morna e 3 colheres (sopa) de azeite extravirgem`,
+          `Tomates-cereja ao meio, alecrim fresco e flor de sal ou sal grosso`
+        ],
+        steps: [
+          `Misture farinha, fermento, pitada de sal, água morna e metade do azeite em forma redonda untada (16–18 cm); deixe descansar 15 minutos.`,
+          `Regue com o restante do azeite, afunde os dedos na massa, acomode os tomates-cereja, o alecrim e a flor de sal.`,
+          `Asse na Air Fryer a 180 °C por 16 minutos até dourar a superfície.`
+        ]
+      },
+      {
+        id: `R132`,
+        num: `#132`,
+        title: `Folhado Romeu e Julieta (Goiabada e Queijo)`,
+        category: `paes`,
+        time: 10,
+        temp: 190,
+        servings: `4 unidades`,
+        technique: `Massa Folhada`,
+        summary: `Pastelzinho doce de massa folhada super crocante com recheio clássico mineiro derretido no interior.`,
+        tip: `Use a massa folhada bem gelada para que a manteiga das camadas crie folhas crocantes ao entrar no ar quente.`,
+        ingredients: [
+          `4 quadrados de massa folhada pronta gelada`,
+          `100 g de goiabada cascão em cubos`,
+          `100 g de queijo minas padrão ou muçarela`,
+          `1 gema batida para pincelar`
+        ],
+        steps: [
+          `Coloque um cubo de goiabada e um de queijo no centro de cada quadrado de massa folhada gelada e dobre em triângulo, selando as bordas com garfo.`,
+          `Pincele gema batida por cima e faça dois pequenos cortes no topo para o vapor escapar.`,
+          `Asse na Air Fryer pré-aquecida a 190 °C por 10 minutos até folhar e dourar.`
+        ]
+      },
+      {
+        id: `R122`,
+        num: `#122`,
+        title: `Pastel de Belém Cremoso na Air Fryer`,
+        category: `paes`,
+        time: 15,
+        temp: 190,
+        servings: `6 unidades`,
+        technique: `Confeitaria Fina`,
+        summary: `Cestinhas de massa folhada recheadas com creme aveludado de gemas e leite condensado com topo caramelizado.`,
+        tip: `Polvilhe canela na hora de servir e não encha as forminhas até a borda para o creme não transbordar ao ferver.`,
+        ingredients: [
+          `6 discos de massa folhada acomodados em forminhas de empada`,
+          `1/2 lata de leite condensado e 100 g de nata ou creme de leite`,
+          `2 gemas peneiradas e 1 colher (chá) de essência de baunilha`,
+          `Canela em pó para polvilhar`
+        ],
+        steps: [
+          `Forre 6 forminhas metálicas ou de silicone com os discos de massa folhada, ajustando bem as laterais.`,
+          `Misture o leite condensado, a nata, as gemas peneiradas e a baunilha e preencha 3/4 de cada forminha.`,
+          `Asse na Air Fryer a 190 °C por 14 a 15 minutos até a massa dourar e o creme ganhar pintinhas caramelizadas.`
+        ]
+      },
+      {
+        id: `R123`,
+        num: `#123`,
+        title: `Bolo Fofinho de Banana e Aveia (Sem Forno)`,
+        category: `paes`,
+        time: 22,
+        temp: 160,
+        servings: `6 fatias`,
+        technique: `Confeitaria 160 °C`,
+        summary: `Bolo caseiro aromático batido à mão em 5 minutos e assado em forma de 16 cm a 160 °C.`,
+        tip: `Bolos na Air Fryer exigem temperatura baixa (160 °C) para o topo não queimar antes de o centro assar completamente.`,
+        ingredients: [
+          `3 bananas maduras amassadas`,
+          `2 ovos e 3 colheres (sopa) de óleo ou manteiga derretida`,
+          `1 xícara (chá) de aveia em flocos finos e 1/3 xícara de açúcar mascavo`,
+          `1 colher (chá) de canela e 1 colher (sobremesa) de fermento em pó`
+        ],
+        steps: [
+          `Misture as bananas amassadas com os ovos e o óleo; acrescente aveia, açúcar mascavo, canela e por último o fermento.`,
+          `Despeje em forma redonda de 16 cm untada (deixando folga lateral no cesto).`,
+          `Asse a 160 °C por 22 minutos até o palito sair limpo.`
+        ]
+      },
+      {
+        id: `R126P`,
+        num: `#126P`,
+        title: `Torta de Maçã Amanteigada Individual`,
+        category: `paes`,
+        time: 25,
+        temp: 170,
+        servings: `4 porções`,
+        technique: `Massa Podre 170 °C`,
+        summary: `Massa crocante amanteigada abraçando recheio suculento de maçãs caramelizadas com açúcar e canela.`,
+        tip: `Mantenha a manteiga bem gelada ao fazer a massa quebradiça para obter textura aerada e delicada.`,
+        ingredients: [
+          `1,5 xícara de farinha de trigo, 80 g de manteiga gelada e 2 colheres (sopa) de açúcar`,
+          `2 maçãs picadas em cubos pequenos com suco de 1/2 limão`,
+          `2 colheres (sopa) de açúcar mascavo, canela e 1 gema para pincelar`
+        ],
+        steps: [
+          `Faça uma farofa com farinha, açúcar e manteiga gelada (pingue 1 a 2 colheres de água gelada se preciso para dar liga); forre uma forma de 16 cm reservando 1/3 da massa.`,
+          `Recheie com as maçãs misturadas ao limão, açúcar mascavo e canela; cubra com tiras da massa restante e pincele gema.`,
+          `Asse a 170 °C por 25 minutos até dourar.`
+        ]
+      },
+
+      // --- DESIDRATADOS ---
+      {
+        id: `R157`,
+        num: `#157`,
+        title: `Rodelas de Laranja e Limão Desidratadas`,
+        category: `desidratados`,
+        time: 45,
+        temp: 110,
+        servings: `12 rodelas`,
+        technique: `Desidratação Lenta`,
+        summary: `Guarnições translúcidas e aromáticas para drinks, chás e decoração culinária em temperatura mínima.`,
+        tip: `Pressione bem as rodelas entre folhas de papel-toalha antes de assar para reduzir o tempo de secagem no cesto.`,
+        ingredients: [
+          `1 laranja Bahia firme em rodelas uniformes de 3 mm`,
+          `1 limão-siciliano firme em rodelas uniformes de 3 mm`
+        ],
+        steps: [
+          `Pressione as rodelas entre folhas de papel-toalha para absorver o excesso de suco.`,
+          `Arrume em camada única no cesto na menor temperatura da Air Fryer (100 °C a 120 °C).`,
+          `Desidrate por 45 minutos, virando na metade do tempo até ficarem translúcidas e secas.`
+        ]
+      },
+      {
+        id: `R161`,
+        num: `#161`,
+        title: `Beef Jerky (Tiras de Carne Desidratada)`,
+        category: `desidratados`,
+        time: 50,
+        temp: 115,
+        servings: `4 porções`,
+        technique: `Desidratação 115 °C`,
+        summary: `Snack proteico artesanal de coxão mole ou patinho fatiado fino e marinado em shoyu e páprica defumada.`,
+        tip: `Retire toda a gordura visível da peça antes de fatiar (3 mm) contra as fibras — gordura não desidrata e estraga o snack.`,
+        ingredients: [
+          `400 g de coxão mole ou patinho sem gordura, fatiado bem fino (3 mm)`,
+          `3 colheres (sopa) de shoyu e 1 colher (sopa) de molho inglês`,
+          `1 colher (chá) de páprica defumada, alho em pó e pimenta-do-reino`
+        ],
+        steps: [
+          `Marine as tiras finas de carne nos temperos por 30 minutos na geladeira e seque completamente com papel-toalha.`,
+          `Disponha as tiras esticadas na grelha do cesto na menor temperatura da Air Fryer (110 °C a 120 °C).`,
+          `Desidrate por 50 minutos, virando na metade até a carne secar mantendo leve flexibilidade.`
+        ]
+      },
+      {
+        id: `R162`,
+        num: `#162`,
+        title: `Mix de Ervas Frescas Desidratadas`,
+        category: `desidratados`,
+        time: 12,
+        temp: 100,
+        servings: `1 pote`,
+        technique: `100 °C + Tela`,
+        summary: `Conserve alecrim, tomilho e manjericão frescos por meses transformando-os em tempero seco super aromático.`,
+        tip: `Como as folhas são muito leves, cubra com uma grelha metálica pequena ou coloque sobre papel-manteiga furado com um garfo pesado na borda para não voarem até a resistência!`,
+        ingredients: [
+          `2 maços de ervas frescas (alecrim, tomilho e manjericão) lavadas e completamente secas`
+        ],
+        steps: [
+          `Seque muito bem os ramos lavados em centrífuga de salada e papel-toalha.`,
+          `Acomode sobre papel-manteiga furado com um talher/grelha pesada segurando os caules para a ventoinha não sugar as folhas.`,
+          `Desidrate a 100 °C por 10 a 12 minutos até esfarelarem ao toque; guarde em pote hermético após esfriar.`
+        ]
+      },
+      {
+        id: `R163`,
+        num: `#163`,
+        title: `Chips de Beterraba e Batata-Doce Roxa`,
+        category: `desidratados`,
+        time: 22,
+        temp: 140,
+        servings: `3 porções`,
+        technique: `Mandoline 1,5 mm`,
+        summary: `Chips coloridos e finíssimos assados em temperatura moderada (140 °C) para crocar sem queimar os açúcares naturais.`,
+        tip: `Use fatiador mandoline (1,5 mm) e agite a cada 5 minutos para garantir desidratação uniforme.`,
+        ingredients: [
+          `1 beterraba pequena e 1 batata-doce roxa em lâminas finas (1,5 mm)`,
+          `1 colher (chá) de azeite de oliva`,
+          `Flor de sal a gosto`
+        ],
+        steps: [
+          `Seque muito bem as lâminas de raízes no papel-toalha e passe uma camada mínima de azeite.`,
+          `Leve ao cesto da Air Fryer a 140 °C por 22 minutos.`,
+          `Agite o cesto a cada 5 minutos para que desidratem de forma uniforme sem queimar; finalize com flor de sal ao esfriar.`
+        ]
+      }
+    ];
+
+    const MASTER_TABLE_ROWS = [
+      { cut: `Picanha / Bife Ancho (2 dedos)`, qty: `2 a 3 bifes (600 g)`, temp: `200 °C`, time: `10 a 12 min`, action: `Pré-aquecer 5 min; virar aos 6 min` },
+      { cut: `Costela Bovina / Suína no Alumínio`, qty: `800 g a 1 kg`, temp: `180 °C + 200 °C`, time: `40 min + 10 min`, action: `Assar fechada no alumínio e dourar aberta` },
+      { cut: `Hambúrguer Artesanal (150 g)`, qty: `2 a 4 unidades`, temp: `200 °C`, time: `9 a 10 min`, action: `Virar aos 6 min; derreter queijo no minuto final` },
+      { cut: `Torresmo / Panceta em Cubos`, qty: `600 g`, temp: `190 °C a 200 °C`, time: `28 a 32 min`, action: `Sacudir a cada 8 min e escorrer excesso de banha` },
+      { cut: `Bisteca / Copa Lombo Suíno`, qty: `4 fatias (600 g)`, temp: `200 °C`, time: `14 a 15 min`, action: `Dar 2 talhos na borda de gordura para não curvar` },
+      { cut: `Coxa e Sobrecoxa com Pele`, qty: `800 g a 1 kg`, temp: `190 °C a 200 °C`, time: `25 a 30 min`, action: `Iniciar com pele para baixo (15 min) e virar` },
+      { cut: `Filé de Peito de Frango`, qty: `500 g`, temp: `190 °C`, time: `11 a 12 min`, action: `Não passar de 12 min para preservar suculência` },
+      { cut: `Tulipa / Asinha de Frango`, qty: `700 g`, temp: `200 °C`, time: `22 a 24 min`, action: `Polvilhar 1 col. (chá) de amido para extra crocância` },
+      { cut: `Coração de Frango`, qty: `500 g`, temp: `200 °C`, time: `10 a 12 min`, action: `Cozimento rápido em alta temperatura para não endurecer` },
+      { cut: `Filé de Salmão (Posta Alta)`, qty: `400 g`, temp: `200 °C`, time: `10 a 12 min`, action: `Pele voltada para baixo; não precisa virar` },
+      { cut: `Filé de Tilápia / Pescada`, qty: `500 g`, temp: `190 °C a 200 °C`, time: `12 a 14 min`, action: `Borrifar azeite se empanado no fubá ou Panko` },
+      { cut: `Camarão Grande / Lula em Anéis`, qty: `400 g`, temp: `200 °C`, time: `8 a 10 min`, action: `Atenção máxima ao tempo para evitar textura borrachuda` },
+      { cut: `Batata Rústica (In Natura)`, qty: `500 g`, temp: `200 °C`, time: `20 a 22 min`, action: `Secar muito bem no pano antes de envolver no azeite` },
+      { cut: `Brócolis / Couve-Flor / Abobrinha`, qty: `350 g`, temp: `190 °C`, time: `10 a 12 min`, action: `Floretes secos para tostar em vez de cozinhar no vapor` },
+      { cut: `Pão de Queijo Congelado / Caseiro`, qty: `8 a 10 unidades`, temp: `180 °C`, time: `12 a 15 min`, action: `Não usar 200 °C para não dourar por fora e ficar cru no centro` },
+      { cut: `Bolos e Confeitaria (Forma 16 cm)`, qty: `1 receita`, temp: `160 °C`, time: `22 a 28 min`, action: `Temperatura baixa (160 °C) evita que o topo queime antes do miolo` },
+      { cut: `Desidratados (Frutas / Tomate / Carne)`, qty: `Camada única`, temp: `100 °C a 120 °C`, time: `35 a 50 min`, action: `Cortes finos em mandoline e secagem prévia em papel-toalha` }
+    ];
+
+    const TEN_SECRETS = [
+      { num: `01`, title: `Secagem Absoluta da Superfície`, desc: `Água é inimiga da reação de Maillard. Sempre enxugue batatas, peixes e carnes com papel-toalha antes de temperar — superfície úmida gera vapor e cozinha em vez de dourar.` },
+      { num: `02`, title: `Pré-Aquecimento Real de 4 a 5 Minutos`, desc: `Para carnes vermelhas, hambúrgueres, peixes e batatas, aqueça a Air Fryer vazia a 200 °C por 4 minutos antes de inserir os alimentos para selar os sucos internos.` },
+      { num: `03`, title: `Empanamento Inteligente`, desc: `Farinha de trigo branca pura fica pálida no ar quente. Prefira farinha Panko, fubá mimoso, flocão de milho ou farinha de rosca misturada com parmesão e 1 col. (chá) de azeite.` },
+      { num: `04`, title: `O Segredo do Amido de Milho nas Aves`, desc: `Ao preparar frango a passarinho, tulipas ou asinhas, adicione 1 colher (sopa) rasa de amido de milho aos temperos secos: ele absorve a umidade da pele e cria película vítrea crocante.` },
+      { num: `05`, title: `Maionese como Condutor Térmico`, desc: `Em coxa, sobrecoxa ou filé de frango, 1 colher de maionese substitui o óleo e o ovo batido, fixando os temperos e dourando de maneira uniforme.` },
+      { num: `06`, title: `Respeito à Camada Única`, desc: `Nunca encha mais de 2/3 da altura do cesto. Se os alimentos ficarem empilhados sem espaço para o vórtice de ar quente passar, o centro fica murcho — prefira duas levas rápidas.` },
+      { num: `07`, title: `Borrife Azeite no Momento Certo`, desc: `Em empanados e vegetais, um jato curto de azeite em spray no início e na metade do tempo elimina qualquer aspecto de farinha crua e garante crocância.` },
+      { num: `08`, title: `Técnica de Dupla Temperatura`, desc: `Em costelas, cupim, maminha e lombo recheado, inicie a 180 °C (coberto no alumínio) para assar o interior sem queimar e finalize nos últimos 8–10 min a 200 °C descoberto.` },
+      { num: `09`, title: `Pausa para Sacudir ou Virar na Metade`, desc: `O fluxo de ar incide com maior intensidade de cima para baixo. Virar bifes e sacudir batatas/legumes na metade do tempo garante dourado 360°.` },
+      { num: `10`, title: `Controle de Açúcares e Mel`, desc: `Marinadas que levam mel, açúcar mascavo ou molho barbecue queimam rápido acima de 190 °C. Aplique pinceladas doces apenas nos últimos 5 a 8 minutos de preparo.` }
+    ];
+
+    const TEMP_SPECTRUM_DATA = [
+      { label: `Desidratados`, minT: 100, maxT: 120, avgTime: `35–50 min`, colorVar: `var(--data-3)` },
+      { label: `Ovos & Pudim`, minT: 130, maxT: 160, avgTime: `12–35 min`, colorVar: `var(--data-4)` },
+      { label: `Bolos & Pão de Queijo`, minT: 160, maxT: 180, avgTime: `15–28 min`, colorVar: `var(--data-1)` },
+      { label: `Legumes & Gratinados`, minT: 185, maxT: 195, avgTime: `10–20 min`, colorVar: `var(--primary)` },
+      { label: `Aves & Suínos`, minT: 190, maxT: 200, avgTime: `12–30 min`, colorVar: `var(--data-2)` },
+      { label: `Bovinos, Pescados & Maillard`, minT: 195, maxT: 200, avgTime: `6–22 min`, colorVar: `var(--secondary)` }
+    ];
+
+    // =========================================================================
+    // 2. ESTADO DA APLICAÇÃO & PERSISTÊNCIA SHIM
+    // =========================================================================
+
+    let appState = {
+      selectedRecipeId: `R004`,
+      activeCategory: `all`,
+      searchQuery: ``,
+      timeFilter: `all`,
+      sortBy: `id`,
+      favorites: [],
+      cooked: [],
+      checkedIngredients: {},
+      maintenanceDone: [],
+      masteredSecrets: [],
+      highlightedTableRow: -1
+    };
+
+    let timerState = {
+      totalSeconds: 22 * 60,
+      remainingSeconds: 22 * 60,
+      running: false,
+      intervalId: null,
+      recipeId: `R004`
+    };
+
+    function saveState() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.setAppState === `function`) {
+        window.notebookAppApi.setAppState({
+          selectedRecipeId: appState.selectedRecipeId,
+          activeCategory: appState.activeCategory,
+          favorites: appState.favorites,
+          cooked: appState.cooked,
+          checkedIngredients: appState.checkedIngredients,
+          maintenanceDone: appState.maintenanceDone,
+          masteredSecrets: appState.masteredSecrets
+        }).catch(function() {});
+      }
+    }
+
+    // =========================================================================
+    // 3. ILUSTRAÇÕES SVG POR CATEGORIA (FLAT SPOT INKS COM TOKENS CSS)
+    // =========================================================================
+
+    function getCategorySvg(cat) {
+      const svgs = {
+        acompanhamentos: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <path d="M12 36 C12 49 21 54 32 54 C43 54 52 49 52 36 Z" fill="var(--primary)" stroke="var(--outline)" stroke-width="2.5"/>
+          <path d="M16 36 C18 22 25 18 32 18 C39 18 46 22 48 36 Z" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="2.5"/>
+          <path d="M22 28 L27 16 M32 28 L34 14 M41 29 L45 19" stroke="var(--secondary)" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="24" cy="43" r="2.5" fill="var(--background)"/>
+          <circle cx="33" cy="45" r="2.5" fill="var(--background)"/>
+        </svg>`,
+        legumes: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <path d="M28 34 L28 52 L36 52 L36 34 Z" fill="var(--primary-container)" stroke="var(--outline)" stroke-width="2.5"/>
+          <circle cx="22" cy="28" r="10" fill="var(--primary)" stroke="var(--outline)" stroke-width="2.5"/>
+          <circle cx="42" cy="28" r="10" fill="var(--primary)" stroke="var(--outline)" stroke-width="2.5"/>
+          <circle cx="32" cy="20" r="11" fill="var(--primary)" stroke="var(--outline)" stroke-width="2.5"/>
+          <circle cx="45" cy="44" r="6" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="2"/>
+        </svg>`,
+        bovina: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <path d="M12 34 C12 20 26 14 42 18 C52 20 54 30 50 40 C46 50 22 52 14 44 C11 40 12 37 12 34 Z" fill="var(--secondary)" stroke="var(--outline)" stroke-width="2.5"/>
+          <path d="M20 28 L29 37 M28 22 L38 33 M37 22 L44 29" stroke="var(--background)" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="27" y="29" width="11" height="8" rx="2" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="2"/>
+        </svg>`,
+        suina: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <rect x="12" y="22" width="40" height="22" rx="10" fill="var(--data-2)" stroke="var(--outline)" stroke-width="2.5"/>
+          <path d="M22 22 L22 44 M32 22 L32 44 M42 22 L42 44" stroke="var(--outline)" stroke-width="2.5"/>
+          <circle cx="17" cy="18" r="4" fill="var(--background)" stroke="var(--outline)" stroke-width="2"/>
+          <circle cx="48" cy="46" r="5" fill="var(--primary)" stroke="var(--outline)" stroke-width="2"/>
+        </svg>`,
+        aves: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <path d="M16 44 L26 36 C22 26 28 16 38 14 C47 12 52 19 50 28 C48 37 38 41 30 39 L20 48 Z" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="15" cy="48" r="4" fill="var(--background)" stroke="var(--outline)" stroke-width="2"/>
+          <path d="M35 22 C39 20 43 22 44 26" stroke="var(--secondary)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>`,
+        pescados: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <path d="M14 32 C22 18 38 18 46 32 C38 46 22 46 14 32 Z" fill="var(--primary)" stroke="var(--outline)" stroke-width="2.5"/>
+          <path d="M45 32 L54 22 L54 42 Z" fill="var(--primary-container)" stroke="var(--outline)" stroke-width="2.5" stroke-linejoin="round"/>
+          <circle cx="22" cy="30" r="2.5" fill="var(--background)"/>
+          <circle cx="34" cy="46" r="7" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="2"/>
+        </svg>`,
+        fitness: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <path d="M12 34 C12 48 21 53 32 53 C43 53 52 48 52 34 Z" fill="var(--primary-container)" stroke="var(--outline)" stroke-width="2.5"/>
+          <circle cx="23" cy="28" r="7" fill="var(--primary)" stroke="var(--outline)" stroke-width="2"/>
+          <circle cx="35" cy="25" r="8" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="2"/>
+          <circle cx="43" cy="30" r="6" fill="var(--data-2)" stroke="var(--outline)" stroke-width="2"/>
+        </svg>`,
+        boteco: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <rect x="12" y="26" width="18" height="18" rx="4" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="2.5"/>
+          <rect x="26" y="16" width="18" height="18" rx="4" fill="var(--data-2)" stroke="var(--outline)" stroke-width="2.5"/>
+          <path d="M36 48 C36 39 50 39 50 48 Z" fill="var(--error)" stroke="var(--outline)" stroke-width="2.5"/>
+        </svg>`,
+        sobremesas: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <path d="M16 44 L22 24 L42 24 L48 44 Z" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M21 24 C21 20 43 20 43 24 L43 29 C38 32 26 27 21 30 Z" fill="var(--data-4)" stroke="var(--outline)" stroke-width="2"/>
+          <ellipse cx="32" cy="46" rx="22" ry="5" fill="var(--primary-container)" stroke="var(--outline)" stroke-width="2.5"/>
+        </svg>`,
+        paes: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <ellipse cx="32" cy="35" rx="20" ry="14" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="2.5"/>
+          <circle cx="24" cy="31" r="4" fill="var(--error)" stroke="var(--outline)" stroke-width="1.5"/>
+          <circle cx="38" cy="33" r="4" fill="var(--error)" stroke="var(--outline)" stroke-width="1.5"/>
+          <path d="M28 24 L34 20 M31 27 L37 25" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>`,
+        desidratados: `<svg viewBox="0 0 64 64" width="44" height="44" aria-hidden="true">
+          <circle cx="28" cy="34" r="15" fill="var(--data-2)" stroke="var(--outline)" stroke-width="2.5"/>
+          <circle cx="28" cy="34" r="10" fill="var(--tertiary)" stroke="var(--outline)" stroke-width="1.5"/>
+          <path d="M28 24 L28 44 M18 34 L38 34 M21 27 L35 41 M35 27 L21 41" stroke="var(--background)" stroke-width="1.5"/>
+          <circle cx="44" cy="22" r="9" fill="var(--primary-container)" stroke="var(--outline)" stroke-width="2"/>
+        </svg>`
+      };
+      return svgs[cat] || svgs.acompanhamentos;
+    }
+
+    function getCategoryLabel(catId) {
+      const found = CATEGORIES.find(function(c) { return c.id === catId; });
+      return found ? found.label : catId;
+    }
+
+    // =========================================================================
+    // 4. RENDERIZAÇÃO DO CATÁLOGO DE RECEITAS
+    // =========================================================================
+
+    function renderCategoryStrip() {
+      const strip = document.getElementById(`category-strip`);
+      if (!strip) return;
+
+      const html = CATEGORIES.map(function(cat) {
+        const count = cat.id === `all`
+          ? RECIPES.length
+          : RECIPES.filter(function(r) { return r.category === cat.id; }).length;
+        const pressed = appState.activeCategory === cat.id ? `true` : `false`;
+        return `<button type="button" class="cat-pill" aria-pressed="${pressed}" onclick="selectCategory('${cat.id}')">
+          <span class="cat-dot ${cat.dotClass}" aria-hidden="true"></span>
+          <span>${cat.label}</span>
+          <span class="tabular">(${count})</span>
+        </button>`;
+      }).join(``);
+
+      strip.innerHTML = html;
+    }
+
+    function getFilteredRecipes() {
+      const q = appState.searchQuery.trim().toLowerCase();
+      let list = RECIPES.filter(function(r) {
+        if (appState.activeCategory !== `all` && r.category !== appState.activeCategory) return false;
+
+        if (appState.timeFilter === `fast` && r.time > 15) return false;
+        if (appState.timeFilter === `medium` && (r.time <= 15 || r.time > 25)) return false;
+        if (appState.timeFilter === `long` && r.time <= 25) return false;
+        if (appState.timeFilter === `favs` && appState.favorites.indexOf(r.id) === -1) return false;
+        if (appState.timeFilter === `cooked` && appState.cooked.indexOf(r.id) === -1) return false;
+
+        if (q) {
+          const hay = (r.title + ` ` + r.summary + ` ` + r.technique + ` ` + getCategoryLabel(r.category) + ` ` + r.ingredients.join(` `) + ` ` + r.num).toLowerCase();
+          if (hay.indexOf(q) === -1) return false;
+        }
+        return true;
+      });
+
+      list = list.slice();
+      if (appState.sortBy === `time-asc`) {
+        list.sort(function(a, b) { return a.time - b.time; });
+      } else if (appState.sortBy === `temp-asc`) {
+        list.sort(function(a, b) { return a.temp - b.temp; });
+      } else if (appState.sortBy === `temp-desc`) {
+        list.sort(function(a, b) { return b.temp - a.temp; });
+      } else if (appState.sortBy === `name`) {
+        list.sort(function(a, b) { return a.title.localeCompare(b.title, `pt-BR`); });
+      }
+      return list;
+    }
+
+    function renderRecipeGrid() {
+      const grid = document.getElementById(`recipe-grid`);
+      const counter = document.getElementById(`results-counter`);
+      if (!grid) return;
+
+      const filtered = getFilteredRecipes();
+      if (counter) {
+        counter.textContent = `Exibindo ${filtered.length} de ${RECIPES.length} receitas`;
+      }
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `<div class="empty-state">
+          <h3>Nenhuma receita encontrada com esses filtros</h3>
+          <p class="recipe-summary">Nenhum prato corresponde à busca ou combinação atual de categoria e tempo. Limpe os filtros para explorar todas as 48 receitas testadas.</p>
+          <button type="button" class="btn btn-primary" onclick="resetCatalogFilters()">Mostrar todas as receitas</button>
+        </div>`;
+        return;
+      }
+
+      const cardsHtml = filtered.map(function(r) {
+        const isSelected = appState.selectedRecipeId === r.id ? `is-selected` : ``;
+        const isFav = appState.favorites.indexOf(r.id) !== -1;
+        const isCooked = appState.cooked.indexOf(r.id) !== -1;
+        const catLabel = getCategoryLabel(r.category);
+
+        return `<div class="recipe-card-wrap">
+          <article class="recipe-card ${isSelected}" tabindex="0" role="button" aria-label="Abrir receita ${r.title}" onclick="selectRecipe('${r.id}')" onkeydown="handleCardKey(event, '${r.id}')">
+            <div class="recipe-card-top">
+              <div class="recipe-card-meta">
+                <span class="chip">${r.num}</span>
+                <span class="chip chip-sage">${catLabel}</span>
+                ${isCooked ? `<span class="chip chip-teal">Feita</span>` : ``}
+              </div>
+              <button type="button" class="fav-btn" aria-pressed="${isFav}" aria-label="Favoritar ${r.title}" onclick="toggleFavorite(event, '${r.id}')">
+                <i data-lucide="heart" width="16" height="16"></i>
+              </button>
+            </div>
+
+            <div style="display: flex; gap: var(--space-sm); align-items: center;">
+              <div class="recipe-art">${getCategorySvg(r.category)}</div>
+              <h3 class="recipe-title">${r.title}</h3>
+            </div>
+
+            <p class="recipe-summary">${r.summary}</p>
+
+            <div class="recipe-stats">
+              <span class="stat-badge is-time tabular"><i data-lucide="clock" width="13" height="13"></i> ${r.time} min</span>
+              <span class="stat-badge is-temp tabular"><i data-lucide="thermometer" width="13" height="13"></i> ${r.temp} °C</span>
+              <span class="stat-badge">${r.technique}</span>
+            </div>
+          </article>
+        </div>`;
+      }).join(``);
+
+      grid.innerHTML = cardsHtml;
+      refreshLucideIcons();
+    }
+
+    function renderRecipeDetail() {
+      const panel = document.getElementById(`recipe-detail-panel`);
+      if (!panel) return;
+
+      let recipe = RECIPES.find(function(r) { return r.id === appState.selectedRecipeId; });
+      if (!recipe) recipe = RECIPES[0];
+
+      const isFav = appState.favorites.indexOf(recipe.id) !== -1;
+      const isCooked = appState.cooked.indexOf(recipe.id) !== -1;
+      const checkedMap = appState.checkedIngredients[recipe.id] || [];
+
+      if (timerState.recipeId !== recipe.id) {
+        stopTimer();
+        timerState.recipeId = recipe.id;
+        timerState.totalSeconds = recipe.time * 60;
+        timerState.remainingSeconds = recipe.time * 60;
+      }
+
+      const ingHtml = recipe.ingredients.map(function(ing, idx) {
+        const isChecked = checkedMap.indexOf(idx) !== -1;
+        return `<li class="ingredient-item ${isChecked ? `is-checked` : ``}" onclick="toggleIngredient('${recipe.id}', ${idx})">
+          <input type="checkbox" ${isChecked ? `checked` : ``} aria-label="Marcar ingrediente ${ing}" onclick="event.stopPropagation(); toggleIngredient('${recipe.id}', ${idx})">
+          <span>${ing}</span>
+        </li>`;
+      }).join(``);
+
+      const stepsHtml = recipe.steps.map(function(st, idx) {
+        return `<li class="step-row">
+          <span class="step-num tabular">${idx + 1}</span>
+          <span>${st}</span>
+        </li>`;
+      }).join(``);
+
+      const pct = timerState.totalSeconds > 0
+        ? Math.round(((timerState.totalSeconds - timerState.remainingSeconds) / timerState.totalSeconds) * 100)
+        : 0;
+
+      panel.innerHTML = `
+        <div class="detail-hero">
+          <div class="detail-art-lg">${getCategorySvg(recipe.category)}</div>
+          <div style="display: grid; gap: var(--space-xs);">
+            <div class="recipe-card-meta">
+              <span class="chip">${recipe.num}</span>
+              <span class="chip chip-orange">${getCategoryLabel(recipe.category)}</span>
+            </div>
+            <h3 class="detail-title">${recipe.title}</h3>
+          </div>
+        </div>
+
+        <div class="detail-metrics">
+          <div class="metric-box">
+            <div class="metric-box-val tabular">${recipe.time} min</div>
+            <div class="metric-box-lbl">Tempo</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-box-val tabular" style="color: var(--secondary);">${recipe.temp} °C</div>
+            <div class="metric-box-lbl">Temperatura</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-box-val">${recipe.servings}</div>
+            <div class="metric-box-lbl">Rendimento</div>
+          </div>
+        </div>
+
+        <div class="card-actions-inline" style="flex-wrap: wrap;">
+          <button type="button" class="btn btn-sm ${isFav ? `btn-secondary` : ``}" onclick="toggleFavorite(event, '${recipe.id}')">
+            <i data-lucide="heart" width="15" height="15"></i> ${isFav ? `Nos Favoritos` : `Favoritar`}
+          </button>
+          <button type="button" class="btn btn-sm ${isCooked ? `btn-primary` : ``}" onclick="toggleCooked('${recipe.id}')">
+            <i data-lucide="check-circle-2" width="15" height="15"></i> ${isCooked ? `Receita Feita!` : `Marcar como Feita`}
+          </button>
+          <button type="button" class="btn btn-sm" id="copy-recipe-btn" onclick="copyRecipeText('${recipe.id}')">
+            <i data-lucide="clipboard-copy" width="15" height="15"></i> Copiar
+          </button>
+        </div>
+
+        <div class="timer-box">
+          <div class="timer-top">
+            <div>
+              <span class="label-voice" style="color: var(--on-primary-container);">Timer da Air Fryer (${recipe.temp} °C)</span>
+              <div class="timer-clock tabular" id="timer-display">${formatSeconds(timerState.remainingSeconds)}</div>
+            </div>
+            <div style="display: flex; gap: var(--space-xs);">
+              <button type="button" class="btn btn-sm btn-ink" id="timer-toggle-btn" onclick="toggleTimer()">
+                ${timerState.running ? `Pausar` : `Iniciar`}
+              </button>
+              <button type="button" class="btn btn-sm" onclick="resetTimer()">Reiniciar</button>
+            </div>
+          </div>
+          <div class="timer-bar-track" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100">
+            <div class="timer-bar-fill" id="timer-bar-fill" style="width: ${pct}%;"></div>
+          </div>
+          <span class="recipe-summary" id="timer-hint" style="color: var(--on-primary-container); font-size: 0.8125rem;">
+            Dica: pause aos ${Math.max(1, Math.round(recipe.time / 2))} min para virar ou sacudir o cesto.
+          </span>
+        </div>
+
+        <div style="display: grid; gap: var(--space-xs);">
+          <span class="label-voice">Ingredientes (${recipe.ingredients.length} itens — clique para riscar)</span>
+          <ul class="ingredient-list">${ingHtml}</ul>
+        </div>
+
+        <div style="display: grid; gap: var(--space-xs);">
+          <span class="label-voice">Modo de Preparo Passo a Passo</span>
+          <ol class="steps-list">${stepsHtml}</ol>
+        </div>
+
+        <div class="chef-tip-callout">
+          <span class="label-voice">Dica de Ouro do Chef</span>
+          <p style="font-size: 0.9rem;">${recipe.tip}</p>
+        </div>
+      `;
+
+      refreshLucideIcons();
+    }
+
+    // =========================================================================
+    // 5. INTERAÇÕES DO CATÁLOGO & TIMER
+    // =========================================================================
+
+    function selectCategory(catId) {
+      appState.activeCategory = catId;
+      renderCategoryStrip();
+      renderRecipeGrid();
+      saveState();
+    }
+
+    function handleSearchInput(val) {
+      appState.searchQuery = val || ``;
+      renderRecipeGrid();
+    }
+
+    function handleTimeFilter(val) {
+      appState.timeFilter = val || `all`;
+      renderRecipeGrid();
+    }
+
+    function handleSortChange(val) {
+      appState.sortBy = val || `id`;
+      renderRecipeGrid();
+    }
+
+    function resetCatalogFilters() {
+      appState.activeCategory = `all`;
+      appState.searchQuery = ``;
+      appState.timeFilter = `all`;
+      appState.sortBy = `id`;
+
+      const searchEl = document.getElementById(`recipe-search`);
+      const timeEl = document.getElementById(`time-filter`);
+      const sortEl = document.getElementById(`sort-select`);
+      if (searchEl) searchEl.value = ``;
+      if (timeEl) timeEl.value = `all`;
+      if (sortEl) sortEl.value = `id`;
+
+      renderCategoryStrip();
+      renderRecipeGrid();
+      saveState();
+    }
+
+    function selectRecipe(id) {
+      appState.selectedRecipeId = id;
+      renderRecipeGrid();
+      renderRecipeDetail();
+      saveState();
+
+      if (window.innerWidth <= 980) {
+        const panel = document.getElementById(`recipe-detail-panel`);
+        if (panel) panel.scrollIntoView({ behavior: `smooth`, block: `start` });
+      }
+    }
+
+    function handleCardKey(ev, id) {
+      if (ev.key === `Enter` || ev.key === ` `) {
+        ev.preventDefault();
+        selectRecipe(id);
+      }
+    }
+
+    function toggleFavorite(ev, id) {
+      if (ev && typeof ev.stopPropagation === `function`) ev.stopPropagation();
+      const idx = appState.favorites.indexOf(id);
+      if (idx === -1) {
+        appState.favorites.push(id);
+      } else {
+        appState.favorites.splice(idx, 1);
+      }
+      renderRecipeGrid();
+      renderRecipeDetail();
+      updateUserProgressKpi();
+      saveState();
+    }
+
+    function toggleCooked(id) {
+      const idx = appState.cooked.indexOf(id);
+      if (idx === -1) {
+        appState.cooked.push(id);
+      } else {
+        appState.cooked.splice(idx, 1);
+      }
+      renderRecipeGrid();
+      renderRecipeDetail();
+      updateUserProgressKpi();
+      saveState();
+    }
+
+    function toggleIngredient(recipeId, ingIdx) {
+      if (!appState.checkedIngredients[recipeId]) {
+        appState.checkedIngredients[recipeId] = [];
+      }
+      const list = appState.checkedIngredients[recipeId];
+      const pos = list.indexOf(ingIdx);
+      if (pos === -1) list.push(ingIdx);
+      else list.splice(pos, 1);
+
+      renderRecipeDetail();
+      saveState();
+    }
+
+    function copyRecipeText(recipeId) {
+      const recipe = RECIPES.find(function(r) { return r.id === recipeId; });
+      const btn = document.getElementById(`copy-recipe-btn`);
+      if (!recipe) return;
+
+      const text = `${recipe.title} (${recipe.time} min · ${recipe.temp} °C)\n\nIngredientes:\n- ${recipe.ingredients.join(`\n- `)}\n\nPreparo:\n${recipe.steps.map(function(s, i) { return `${i + 1}. ${s}`; }).join(`\n`)}\n\nDica: ${recipe.tip}`;
+
+      if (navigator.clipboard && typeof navigator.clipboard.writeText === `function`) {
+        navigator.clipboard.writeText(text).then(function() {
+          if (btn) {
+            btn.textContent = `Copiada!`;
+            setTimeout(function() { renderRecipeDetail(); }, 1800);
+          }
+        }).catch(function() {});
+      } else if (btn) {
+        btn.textContent = `Pronto!`;
+        setTimeout(function() { renderRecipeDetail(); }, 1500);
+      }
+    }
+
+    function formatSeconds(sec) {
+      const m = Math.floor(sec / 60);
+      const s = sec % 60;
+      return `${String(m).padStart(2, `0`)}:${String(s).padStart(2, `0`)}`;
+    }
+
+    function playTimerChime() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = `sine`;
+        osc.frequency.setValueAtTime(660, ctx.currentTime);
+        osc.frequency.setValueAtTime(880, ctx.currentTime + 0.16);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.55);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.55);
+      } catch (e) {}
+    }
+
+    function stopTimer() {
+      if (timerState.intervalId !== null) {
+        clearInterval(timerState.intervalId);
+        timerState.intervalId = null;
+      }
+      timerState.running = false;
+    }
+
+    function updateTimerDom() {
+      const clock = document.getElementById(`timer-display`);
+      const bar = document.getElementById(`timer-bar-fill`);
+      const btn = document.getElementById(`timer-toggle-btn`);
+      const hint = document.getElementById(`timer-hint`);
+      if (clock) clock.textContent = formatSeconds(timerState.remainingSeconds);
+      if (bar) {
+        const pct = timerState.totalSeconds > 0
+          ? Math.round(((timerState.totalSeconds - timerState.remainingSeconds) / timerState.totalSeconds) * 100)
+          : 0;
+        bar.style.width = `${pct}%`;
+      }
+      if (btn) btn.textContent = timerState.running ? `Pausar` : `Iniciar`;
+      if (hint && timerState.remainingSeconds === 0) {
+        hint.textContent = `Tempo concluído! Confira o dourado e sirva.`;
+      }
+    }
+
+    function toggleTimer() {
+      if (timerState.running) {
+        stopTimer();
+        updateTimerDom();
+        return;
+      }
+      if (timerState.remainingSeconds <= 0) {
+        timerState.remainingSeconds = timerState.totalSeconds;
+      }
+      timerState.running = true;
+      updateTimerDom();
+
+      timerState.intervalId = setInterval(function() {
+        if (timerState.remainingSeconds > 0) {
+          timerState.remainingSeconds -= 1;
+          updateTimerDom();
+          if (timerState.remainingSeconds === Math.floor(timerState.totalSeconds / 2)) {
+            playTimerChime();
+            const hint = document.getElementById(`timer-hint`);
+            if (hint) hint.textContent = `Metade do tempo! Hora de virar ou sacudir o cesto.`;
+          }
+        } else {
+          stopTimer();
+          playTimerChime();
+          updateTimerDom();
+        }
+      }, 1000);
+    }
+
+    function resetTimer() {
+      stopTimer();
+      timerState.remainingSeconds = timerState.totalSeconds;
+      renderRecipeDetail();
+    }
+
+    // =========================================================================
+    // 6. MANUTENÇÃO, CONVERSOR 20/20, TABELA MESTRA, GRÁFICO & 10 SEGREDOS
+    // =========================================================================
+
+    function toggleMaintenance(key) {
+      const idx = appState.maintenanceDone.indexOf(key);
+      if (idx === -1) appState.maintenanceDone.push(key);
+      else appState.maintenanceDone.splice(idx, 1);
+
+      renderMaintenanceButtons();
+      saveState();
+    }
+
+    function renderMaintenanceButtons() {
+      const keys = [`cura`, `choque`, `resistencia`, `odores`];
+      const labels = {
+        cura: { on: `Cura realizada`, off: `Marcar como feita` },
+        choque: { on: `Protocolo adotado`, off: `Protocolo adotado` },
+        resistencia: { on: `Resistência limpa`, off: `Resistência limpa` },
+        odores: { on: `Truque anotado`, off: `Truque anotado` }
+      };
+
+      keys.forEach(function(k) {
+        const btn = document.getElementById(`maint-btn-${k}`);
+        if (!btn) return;
+        const done = appState.maintenanceDone.indexOf(k) !== -1;
+        btn.setAttribute(`aria-pressed`, done ? `true` : `false`);
+        btn.innerHTML = `<i data-lucide="check-circle-2" width="16" height="16"></i> ${done ? labels[k].on + (done ? ` ✓` : ``) : labels[k].off}`;
+      });
+
+      const badge = document.getElementById(`maintenance-badge`);
+      if (badge) badge.textContent = `${appState.maintenanceDone.length} / 4 rotinas verificadas`;
+      refreshLucideIcons();
+    }
+
+    function syncTempFromSlider(val) {
+      const num = document.getElementById(`oven-temp-num`);
+      if (num) num.value = val;
+      updateConverter();
+    }
+
+    function syncTempFromNumber(val) {
+      const slider = document.getElementById(`oven-temp-slider`);
+      if (slider) slider.value = val;
+      updateConverter();
+    }
+
+    function syncTimeFromSlider(val) {
+      const num = document.getElementById(`oven-time-num`);
+      if (num) num.value = val;
+      updateConverter();
+    }
+
+    function syncTimeFromNumber(val) {
+      const slider = document.getElementById(`oven-time-slider`);
+      if (slider) slider.value = val;
+      updateConverter();
+    }
+
+    function applyConverterPreset(temp, time) {
+      const tSlider = document.getElementById(`oven-temp-slider`);
+      const tNum = document.getElementById(`oven-temp-num`);
+      const mSlider = document.getElementById(`oven-time-slider`);
+      const mNum = document.getElementById(`oven-time-num`);
+      if (tSlider) tSlider.value = temp;
+      if (tNum) tNum.value = temp;
+      if (mSlider) mSlider.value = time;
+      if (mNum) mNum.value = time;
+      updateConverter();
+    }
+
+    function updateConverter() {
+      const tEl = document.getElementById(`oven-temp-num`);
+      const mEl = document.getElementById(`oven-time-num`);
+      const outTemp = document.getElementById(`conv-out-temp`);
+      const outTime = document.getElementById(`conv-out-time`);
+      const outTempNote = document.getElementById(`conv-out-temp-note`);
+      const outTimeNote = document.getElementById(`conv-out-time-note`);
+      const outAdvice = document.getElementById(`conv-out-advice`);
+
+      if (!tEl || !mEl || !outTemp || !outTime) return;
+
+      const ovenTemp = Math.min(250, Math.max(100, Number(tEl.value) || 180));
+      const ovenTime = Math.min(180, Math.max(5, Number(mEl.value) || 30));
+
+      const afTemp = Math.min(200, Math.max(100, ovenTemp - 20));
+      const minTime = Math.max(4, Math.round(ovenTime * 0.7));
+      const maxTime = Math.max(minTime + 1, Math.round(ovenTime * 0.8));
+
+      outTemp.textContent = `${afTemp} °C`;
+      outTime.textContent = `${minTime}–${maxTime} min`;
+
+      if (outTempNote) {
+        outTempNote.textContent = afTemp === 200
+          ? `Limite máximo da maioria das Air Fryers`
+          : `Redução de ${ovenTemp - afTemp} °C em relação ao forno`;
+      }
+      if (outTimeNote) {
+        outTimeNote.textContent = `Economia de ${ovenTime - maxTime} a ${ovenTime - minTime} min`;
+      }
+      if (outAdvice) {
+        if (afTemp >= 190) {
+          outAdvice.textContent = `Alta convecção: pré-aqueça por 4 a 5 minutos a ${afTemp} °C e vire ou agite os alimentos na metade (${Math.round((minTime + maxTime) / 4)} min) para dourado uniforme.`;
+        } else if (afTemp <= 160) {
+          outAdvice.textContent = `Assado delicado de confeitaria: use forma pequena com 1,5 cm de folga lateral e faça o teste do palito aos ${minTime} minutos.`;
+        } else {
+          outAdvice.textContent = `Temperatura equilibrada: excelente para aves, gratinados e salgados. Confira o ponto aos ${minTime} minutos para não ressecar.`;
+        }
+      }
+    }
+
+    function renderTempSpectrumChart() {
+      const box = document.getElementById(`temp-spectrum-chart`);
+      if (!box) return;
+
+      const w = 780;
+      const h = 270;
+      const padL = 210;
+      const padR = 95;
+      const padT = 26;
+      const padB = 34;
+      const plotW = w - padL - padR;
+      const minAxis = 90;
+      const maxAxis = 210;
+
+      function xPos(t) {
+        return padL + ((t - minAxis) / (maxAxis - minAxis)) * plotW;
+      }
+
+      const gridTicks = [100, 120, 140, 160, 180, 200];
+      const gridSvg = gridTicks.map(function(tk) {
+        const x = xPos(tk).toFixed(1);
+        return `<line x1="${x}" y1="${padT}" x2="${x}" y2="${h - padB}" stroke="var(--outline-variant)" stroke-width="1"/>
+          <text x="${x}" y="${h - 10}" text-anchor="middle" fill="var(--on-surface-variant)" font-size="11" font-family="var(--font-label)">${tk} °C</text>`;
+      }).join(``);
+
+      const rowH = (h - padT - padB) / TEMP_SPECTRUM_DATA.length;
+      const barsSvg = TEMP_SPECTRUM_DATA.map(function(row, idx) {
+        const cy = (padT + idx * rowH + rowH / 2).toFixed(1);
+        const x1 = xPos(row.minT).toFixed(1);
+        const x2 = xPos(row.maxT).toFixed(1);
+        const barW = Math.max(8, xPos(row.maxT) - xPos(row.minT)).toFixed(1);
+
+        return `<text x="${padL - 12}" y="${Number(cy) + 4}" text-anchor="end" fill="var(--on-surface)" font-size="12" font-weight="500" font-family="var(--font-body)">${row.label}</text>
+          <rect x="${x1}" y="${Number(cy) - 7}" width="${barW}" height="14" rx="7" fill="${row.colorVar}" opacity="0.85"/>
+          <circle cx="${x1}" cy="${cy}" r="6" fill="${row.colorVar}" stroke="var(--outline)" stroke-width="1.5"/>
+          <circle cx="${x2}" cy="${cy}" r="6" fill="${row.colorVar}" stroke="var(--outline)" stroke-width="1.5"/>
+          <text x="${Number(x2) + 12}" y="${Number(cy) + 4}" fill="var(--on-surface-variant)" font-size="11" font-weight="600" font-family="var(--font-label)">${row.avgTime}</text>`;
+      }).join(``);
+
+      box.innerHTML = `<svg viewBox="0 0 ${w} ${h}" width="100%" height="270" role="img" aria-label="Gráfico de faixas de temperatura e tempo médio por categoria culinária">
+        ${gridSvg}
+        <line x1="${padL}" y1="${h - padB}" x2="${w - padR}" y2="${h - padB}" stroke="var(--outline)" stroke-width="2"/>
+        ${barsSvg}
+      </svg>`;
+    }
+
+    function renderMasterTable(filterText) {
+      const tbody = document.getElementById(`master-table-body`);
+      if (!tbody) return;
+
+      const q = (filterText || ``).trim().toLowerCase();
+      const rows = MASTER_TABLE_ROWS.filter(function(r) {
+        if (!q) return true;
+        return (r.cut + ` ` + r.action + ` ` + r.temp).toLowerCase().indexOf(q) !== -1;
+      });
+
+      if (rows.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: var(--space-lg);">Nenhum corte encontrado para "${q}".</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = rows.map(function(r, idx) {
+        const hl = appState.highlightedTableRow === idx ? `is-highlight` : ``;
+        return `<tr class="${hl}" onclick="highlightTableRow(${idx})" style="cursor: pointer;">
+          <td><strong>${r.cut}</strong></td>
+          <td class="tabular">${r.qty}</td>
+          <td class="tabular"><strong>${r.temp}</strong></td>
+          <td class="tabular">${r.time}</td>
+          <td>${r.action}</td>
+        </tr>`;
+      }).join(``);
+    }
+
+    function highlightTableRow(idx) {
+      appState.highlightedTableRow = appState.highlightedTableRow === idx ? -1 : idx;
+      const filterEl = document.getElementById(`table-filter-input`);
+      renderMasterTable(filterEl ? filterEl.value : ``);
+    }
+
+    function renderSecretsGrid() {
+      const grid = document.getElementById(`secrets-grid`);
+      const chip = document.getElementById(`secrets-progress-chip`);
+      if (!grid) return;
+
+      grid.innerHTML = TEN_SECRETS.map(function(s) {
+        const mastered = appState.masteredSecrets.indexOf(s.num) !== -1;
+        return `<article class="secret-card ${mastered ? `is-mastered` : ``}" tabindex="0" role="button" aria-pressed="${mastered}" onclick="toggleSecret('${s.num}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleSecret('${s.num}');}">
+          <div class="secret-head">
+            <span class="secret-num tabular">#${s.num}</span>
+            <span class="chip ${mastered ? `chip-teal` : ``}">${mastered ? `Dominado ✓` : `Marcar`}</span>
+          </div>
+          <h4 style="font-size: 1.125rem;">${s.title}</h4>
+          <p class="recipe-summary" style="color: var(--on-surface);">${s.desc}</p>
+        </article>`;
+      }).join(``);
+
+      if (chip) chip.textContent = `${appState.masteredSecrets.length} de 10 dominados`;
+      const kpiSecrets = document.getElementById(`kpi-secrets-count`);
+      if (kpiSecrets) kpiSecrets.textContent = `${appState.masteredSecrets.length} / 10`;
+    }
+
+    function toggleSecret(num) {
+      const idx = appState.masteredSecrets.indexOf(num);
+      if (idx === -1) appState.masteredSecrets.push(num);
+      else appState.masteredSecrets.splice(idx, 1);
+
+      renderSecretsGrid();
+      saveState();
+    }
+
+    function updateUserProgressKpi() {
+      const kpi = document.getElementById(`kpi-user-progress`);
+      if (kpi) {
+        kpi.textContent = `${appState.favorites.length} fav · ${appState.cooked.length} feitas`;
+      }
+    }
+
+    function handleResetProgress(btn) {
+      if (!btn) return;
+      if (btn.dataset.armed !== `true`) {
+        btn.dataset.armed = `true`;
+        btn.textContent = `Clique novamente para confirmar`;
+        setTimeout(function() {
+          if (btn.dataset.armed === `true`) {
+            btn.dataset.armed = `false`;
+            btn.textContent = `Zerar progresso salvo`;
+          }
+        }, 3500);
+        return;
+      }
+
+      btn.dataset.armed = `false`;
+      btn.textContent = `Progresso zerado!`;
+      appState.favorites = [];
+      appState.cooked = [];
+      appState.checkedIngredients = {};
+      appState.maintenanceDone = [];
+      appState.masteredSecrets = [];
+
+      renderRecipeGrid();
+      renderRecipeDetail();
+      renderMaintenanceButtons();
+      renderSecretsGrid();
+      updateUserProgressKpi();
+      saveState();
+
+      setTimeout(function() {
+        btn.textContent = `Zerar progresso salvo`;
+      }, 2000);
+    }
+
+    function refreshLucideIcons() {
+      if (window.lucide && typeof window.lucide.createIcons === `function`) {
+        window.lucide.createIcons();
+      }
+    }
+
+    function setupScrollReveal() {
+      const items = document.querySelectorAll(`.reveal`);
+      if (!(`IntersectionObserver` in window)) {
+        items.forEach(function(el) { el.classList.add(`is-visible`); });
+        return;
+      }
+      const io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add(`is-visible`);
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      items.forEach(function(el) { io.observe(el); });
+    }
+
+    // =========================================================================
+    // 7. INICIALIZAÇÃO SEGURA
+    // =========================================================================
+
+    async function initApp() {
+      if (window.notebookAppApi && typeof window.notebookAppApi.getAppState === `function`) {
+        try {
+          const saved = await window.notebookAppApi.getAppState();
+          if (saved && typeof saved === `object`) {
+            if (saved.selectedRecipeId) appState.selectedRecipeId = saved.selectedRecipeId;
+            if (saved.activeCategory) appState.activeCategory = saved.activeCategory;
+            if (Array.isArray(saved.favorites)) appState.favorites = saved.favorites;
+            if (Array.isArray(saved.cooked)) appState.cooked = saved.cooked;
+            if (saved.checkedIngredients && typeof saved.checkedIngredients === `object`) appState.checkedIngredients = saved.checkedIngredients;
+            if (Array.isArray(saved.maintenanceDone)) appState.maintenanceDone = saved.maintenanceDone;
+            if (Array.isArray(saved.masteredSecrets)) appState.masteredSecrets = saved.masteredSecrets;
+          }
+        } catch (e) {}
+      }
+
+      const kpiTotal = document.getElementById(`kpi-total-recipes`);
+      if (kpiTotal) kpiTotal.textContent = String(RECIPES.length);
+
+      renderCategoryStrip();
+      renderRecipeGrid();
+      renderRecipeDetail();
+      renderMaintenanceButtons();
+      updateConverter();
+      renderTempSpectrumChart();
+      renderMasterTable(``);
+      renderSecretsGrid();
+      updateUserProgressKpi();
+      setupScrollReveal();
+      refreshLucideIcons();
+
+      if (window.notebookAppApi && typeof window.notebookAppApi.notifyAppReady === `function`) {
+        window.notebookAppApi.notifyAppReady();
+      }
+    }
+
+    document.addEventListener(`DOMContentLoaded`, function() {
+      initApp();
+    });
+  </script>
+</body>
+</html>
